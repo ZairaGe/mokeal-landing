@@ -1,82 +1,96 @@
-<div class="row">
-  <div class="col-md-3">
-    <span class="hipster img-fluid rounded"></span>
-  </div>
-
-  <div class="col-md-9">
-    <h1 class="display-4"><span jhiTranslate="home.title">¡Bienvenido, Java Hipster!</span> (Mokeal)</h1>
-
-    <p class="lead" jhiTranslate="home.subtitle">Esta es su página de inicio</p>
-
-    <div>
-      @if (account() !== null) {
-        <div class="alert alert-success">
-          @if (account(); as accountRef) {
-            <span id="home-logged-message" jhiTranslate="home.logged.message" [translateValues]="{ username: accountRef.login }"
-              >Está conectado como &quot;{{ accountRef.login }}&quot;.</span
-            >
-          }
-        </div>
-      } @else {
-        <div class="alert alert-warning">
-          <span jhiTranslate="global.messages.info.authenticated.prefix">Si desea </span>
-          <a class="alert-link" (click)="login()" jhiTranslate="global.messages.info.authenticated.link">iniciar sesión</a
-          ><span jhiTranslate="global.messages.info.authenticated.suffix"
-            >, puede intentar con las cuentas predeterminadas:<br />- Administrador (usuario=&quot;admin&quot; y
-            contraseña=&quot;admin&quot;) <br />- Usuario (usuario=&quot;user&quot; y contraseña=&quot;user&quot;).</span
-          >
-        </div>
-
-        <div class="alert alert-warning">
-          <span jhiTranslate="global.messages.info.register.noaccount">¿Aún no tienes una cuenta?</span>&nbsp;
-          <a class="alert-link" routerLink="/account/register" jhiTranslate="global.messages.info.register.link">Crea una cuenta</a>
-        </div>
-      }
+<div class="container-fluid px-4 py-4 bg-mokeal">
+  @if (account() !== null) {
+    <div class="d-flex gap-2 mb-4">
+      <button class="btn btn-pill" [class.active]="activeTab === 'hoy'" (click)="setTab('hoy')">Hoy</button>
+      <button class="btn btn-pill" [class.active]="activeTab === 'trabajadores'" (click)="setTab('trabajadores')">Trabajadores</button>
+      <button class="btn btn-pill">Tarifas</button>
+      <button class="btn btn-pill">Facturas</button>
     </div>
 
-    <p jhiTranslate="home.question">Si tiene preguntas sobre JHipster:</p>
+    @if (activeTab === 'hoy') {
+      <div class="row g-3 mb-4">
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">Servicios hoy</div>
+            <div class="metric-value">7</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">Trabajadores activos</div>
+            <div class="metric-value">4</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">Ingresos del día</div>
+            <div class="metric-value">€ 620</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="metric-card">
+            <div class="metric-label">KM Desplazamientos</div>
+            <div class="metric-value">38 km</div>
+          </div>
+        </div>
+      </div>
 
-    <ul>
-      <li>
-        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
-          >Página de inicio de JHipster</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://stackoverflow.com/tags/jhipster/info"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.stackoverflow"
-          >JHipster en Stack Overflow</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.bugtracker"
-          >JHipster seguimiento de errores</a
-        >
-      </li>
-      <li>
-        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
-          >Sala de chat pública de JHipster</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
-          >contacto &#64;jhipster en Twitter</a
-        >
-      </li>
-    </ul>
+      <div class="row g-4">
+        <div class="col-md-7">
+          <div class="content-card">
+            <h5 class="section-title">SERVICIOS DEL DÍA</h5>
+            <div class="service-list">
+              <div class="service-item">
+                <div class="d-flex align-items-center">
+                  <span class="dot dot-madrid"></span>
+                  <div>
+                    <div class="fw-bold">C/ Alcalá 45 — Piso</div>
+                    <div class="text-muted small">9:00–11:00 · Ana M.</div>
+                  </div>
+                </div>
+                <span class="badge-custom b-confirmado">Confirmado</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <p>
-      <span jhiTranslate="home.like">Si te gusta JHipster, danos una estrella en</span>
-      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
-        >GitHub</a
-      >!
-    </p>
-  </div>
+        <div class="col-md-5">
+          <div class="content-card mb-4">
+            <h5 class="section-title">MAPA DEL DÍA</h5>
+            <div class="map-placeholder">
+              <div class="map-text">Mapa interactivo de servicios</div>
+            </div>
+          </div>
+          <div class="content-card">
+            <h5 class="section-title">ACCIONES RÁPIDAS</h5>
+            <div class="d-grid gap-3">
+              <button class="btn btn-action">+ Nuevo servicio ↗</button>
+              <button class="btn btn-action">Asignar automáticamente ↗</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (activeTab === 'trabajadores') {
+      <div class="row g-4">
+        <div class="col-md-5">
+          <div class="content-card">
+            <h5 class="section-title">EQUIPO ACTIVO</h5>
+            <p>Contenido de trabajadores aquí...</p>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="content-card">
+            <h5 class="section-title">TIMELINE</h5>
+          </div>
+        </div>
+      </div>
+    }
+  } @else {
+    <div class="text-center mt-5">
+      <h2>Mokeal</h2>
+      <button class="btn btn-primary" (click)="login()">Iniciar Sesión</button>
+    </div>
+  }
 </div>
