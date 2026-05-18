@@ -44,6 +44,13 @@ public class CacheConfiguration {
             createCache(cm, com.mokeal.mokeal.domain.User.class.getName());
             createCache(cm, com.mokeal.mokeal.domain.Authority.class.getName());
             createCache(cm, com.mokeal.mokeal.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mokeal.mokeal.domain.Cliente.class.getName());
+            createCache(cm, com.mokeal.mokeal.domain.Trabajador.class.getName());
+            createCache(cm, com.mokeal.mokeal.domain.Trabajador.class.getName() + ".servicioses");
+            createCache(cm, com.mokeal.mokeal.domain.Tarifa.class.getName());
+            createCache(cm, com.mokeal.mokeal.domain.Servicio.class.getName());
+            createCache(cm, com.mokeal.mokeal.domain.Servicio.class.getName() + ".trabajadoreses");
+            createCache(cm, com.mokeal.mokeal.domain.Factura.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

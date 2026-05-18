@@ -1,0 +1,10 @@
+{
+  "mokealApp": {
+    "ZonaTarifa": {
+      "null": "",
+      "MADRID_CAPITAL": "MADRID_CAPITAL",
+      "COMUNIDAD_MADRID": "COMUNIDAD_MADRID",
+      "FUERA_COMUNIDAD": "FUERA_COMUNIDAD"
+    }
+  }
+}

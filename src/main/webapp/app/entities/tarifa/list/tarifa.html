@@ -1,0 +1,150 @@
+<div>
+  <h2 id="page-heading" data-cy="TarifaHeading">
+    <span jhiTranslate="mokealApp.tarifa.home.title">Tarifas</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading()">
+        <fa-icon icon="sync" [animation]="isLoading() ? 'spin' : undefined" />
+        <span jhiTranslate="mokealApp.tarifa.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tarifa"
+        [routerLink]="['/tarifa/new']"
+      >
+        <fa-icon icon="plus" />
+        <span jhiTranslate="mokealApp.tarifa.home.createLabel">Crear nuevo Tarifa</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (tarifas().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="mokealApp.tarifa.home.notFound">Ningún Tarifas encontrado</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="zona">
+              <div class="d-flex">
+                <span jhiTranslate="mokealApp.tarifa.zona">Zona</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tipoServicio">
+              <div class="d-flex">
+                <span jhiTranslate="mokealApp.tarifa.tipoServicio">Tipo Servicio</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="precioFirstHora">
+              <div class="d-flex">
+                <span jhiTranslate="mokealApp.tarifa.precioFirstHora">Precio First Hora</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="precioHoraAdicional">
+              <div class="d-flex">
+                <span jhiTranslate="mokealApp.tarifa.precioHoraAdicional">Precio Hora Adicional</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="minimoHoras">
+              <div class="d-flex">
+                <span jhiTranslate="mokealApp.tarifa.minimoHoras">Minimo Horas</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="precioPorKm">
+              <div class="d-flex">
+                <span jhiTranslate="mokealApp.tarifa.precioPorKm">Precio Por Km</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activa">
+              <div class="d-flex">
+                <span jhiTranslate="mokealApp.tarifa.activa">Activa</span>
+
+                <fa-icon class="p-1" icon="sort" />
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (tarifa of tarifas(); track trackId(tarifa)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/tarifa', tarifa.id, 'view']">{{ tarifa.id }}</a>
+              </td>
+              <td [jhiTranslate]="'mokealApp.ZonaTarifa.' + (tarifa.zona ?? 'null')">
+                {{
+                  { null: '', MADRID_CAPITAL: 'MADRID_CAPITAL', COMUNIDAD_MADRID: 'COMUNIDAD_MADRID', FUERA_COMUNIDAD: 'FUERA_COMUNIDAD' }[
+                    tarifa.zona ?? 'null'
+                  ]
+                }}
+              </td>
+              <td [jhiTranslate]="'mokealApp.TipoServicio.' + (tarifa.tipoServicio ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    HOGAR: 'HOGAR',
+                    OFICINA: 'OFICINA',
+                    CHALET: 'CHALET',
+                    EVENTO: 'EVENTO',
+                    POST_OBRA: 'POST_OBRA',
+                    POST_MUDANZA: 'POST_MUDANZA',
+                  }[tarifa.tipoServicio ?? 'null']
+                }}
+              </td>
+              <td>{{ tarifa.precioFirstHora }}</td>
+              <td>{{ tarifa.precioHoraAdicional }}</td>
+              <td>{{ tarifa.minimoHoras }}</td>
+              <td>{{ tarifa.precioPorKm }}</td>
+              <td>{{ tarifa.activa }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/tarifa', tarifa.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+                  </a>
+
+                  <a [routerLink]="['/tarifa', tarifa.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(tarifa)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times" />
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

@@ -1,0 +1,49 @@
+{
+  "annotations": {
+    "changelogDate": "20260518102210"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "zona",
+      "fieldType": "ZonaTarifa",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MADRID_CAPITAL,COMUNIDAD_MADRID,FUERA_COMUNIDAD"
+    },
+    {
+      "fieldName": "tipoServicio",
+      "fieldType": "TipoServicio",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "HOGAR,OFICINA,CHALET,EVENTO,POST_OBRA,POST_MUDANZA"
+    },
+    {
+      "fieldName": "precioFirstHora",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "precioHoraAdicional",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "minimoHoras",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "precioPorKm",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "activa",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Tarifa",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

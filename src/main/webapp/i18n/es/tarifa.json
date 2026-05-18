@@ -1,0 +1,30 @@
+{
+  "mokealApp": {
+    "tarifa": {
+      "home": {
+        "title": "Tarifas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Tarifa",
+        "createOrEditLabel": "Crear o editar Tarifa",
+        "notFound": "Ningún Tarifas encontrado"
+      },
+      "created": "Un nuevo Tarifa ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tarifa ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tarifa ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tarifa {{ id }}?"
+      },
+      "detail": {
+        "title": "Tarifa"
+      },
+      "id": "ID",
+      "zona": "Zona",
+      "tipoServicio": "Tipo Servicio",
+      "precioFirstHora": "Precio First Hora",
+      "precioHoraAdicional": "Precio Hora Adicional",
+      "minimoHoras": "Minimo Horas",
+      "precioPorKm": "Precio Por Km",
+      "activa": "Activa"
+    }
+  }
+}

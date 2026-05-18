@@ -1,0 +1,107 @@
+{
+  "annotations": {
+    "changelogDate": "20260518102211"
+  },
+  "applications": ["*"],
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "tipoServicio",
+      "fieldType": "TipoServicio",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "HOGAR,OFICINA,CHALET,EVENTO,POST_OBRA,POST_MUDANZA"
+    },
+    {
+      "fieldName": "zona",
+      "fieldType": "ZonaTarifa",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "MADRID_CAPITAL,COMUNIDAD_MADRID,FUERA_COMUNIDAD"
+    },
+    {
+      "fieldName": "frecuencia",
+      "fieldType": "Frecuencia",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PUNTUAL,SEMANAL,QUINCENAL,MENSUAL"
+    },
+    {
+      "fieldName": "fecha",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "horaInicio",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "5"
+    },
+    {
+      "fieldName": "duracionHoras",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "numTrabajadores",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "estado",
+      "fieldType": "EstadoServicio",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PENDIENTE,CONFIRMADO,EN_CURSO,COMPLETADO,CANCELADO"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "200"
+    },
+    {
+      "fieldName": "municipio",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "100"
+    },
+    {
+      "fieldName": "notas",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "1000"
+    },
+    {
+      "fieldName": "precioTotal",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "descuento",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "jpaMetamodelFiltering": true,
+  "name": "Servicio",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "cliente",
+      "relationshipName": "cliente",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "tarifa",
+      "relationshipName": "tarifa",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "trabajador",
+      "otherEntityRelationshipName": "servicios",
+      "relationshipName": "trabajadores",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

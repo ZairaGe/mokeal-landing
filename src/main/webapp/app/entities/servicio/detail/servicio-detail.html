@@ -1,0 +1,134 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (servicio(); as servicioRef) {
+      <div>
+        <h2 data-cy="servicioDetailsHeading"><span jhiTranslate="mokealApp.servicio.detail.title">Servicio</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ servicioRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.tipoServicio">Tipo Servicio</span></dt>
+          <dd>
+            <span [jhiTranslate]="'mokealApp.TipoServicio.' + (servicioRef.tipoServicio ?? 'null')">{{
+              {
+                null: '',
+                HOGAR: 'HOGAR',
+                OFICINA: 'OFICINA',
+                CHALET: 'CHALET',
+                EVENTO: 'EVENTO',
+                POST_OBRA: 'POST_OBRA',
+                POST_MUDANZA: 'POST_MUDANZA',
+              }[servicioRef.tipoServicio ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.zona">Zona</span></dt>
+          <dd>
+            <span [jhiTranslate]="'mokealApp.ZonaTarifa.' + (servicioRef.zona ?? 'null')">{{
+              { null: '', MADRID_CAPITAL: 'MADRID_CAPITAL', COMUNIDAD_MADRID: 'COMUNIDAD_MADRID', FUERA_COMUNIDAD: 'FUERA_COMUNIDAD' }[
+                servicioRef.zona ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.frecuencia">Frecuencia</span></dt>
+          <dd>
+            <span [jhiTranslate]="'mokealApp.Frecuencia.' + (servicioRef.frecuencia ?? 'null')">{{
+              { null: '', PUNTUAL: 'PUNTUAL', SEMANAL: 'SEMANAL', QUINCENAL: 'QUINCENAL', MENSUAL: 'MENSUAL' }[
+                servicioRef.frecuencia ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.fecha">Fecha</span></dt>
+          <dd>
+            <span>{{ servicioRef.fecha | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.horaInicio">Hora Inicio</span></dt>
+          <dd>
+            <span>{{ servicioRef.horaInicio }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.duracionHoras">Duracion Horas</span></dt>
+          <dd>
+            <span>{{ servicioRef.duracionHoras }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.numTrabajadores">Num Trabajadores</span></dt>
+          <dd>
+            <span>{{ servicioRef.numTrabajadores }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.estado">Estado</span></dt>
+          <dd>
+            <span [jhiTranslate]="'mokealApp.EstadoServicio.' + (servicioRef.estado ?? 'null')">{{
+              {
+                null: '',
+                PENDIENTE: 'PENDIENTE',
+                CONFIRMADO: 'CONFIRMADO',
+                EN_CURSO: 'EN_CURSO',
+                COMPLETADO: 'COMPLETADO',
+                CANCELADO: 'CANCELADO',
+              }[servicioRef.estado ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.direccion">Direccion</span></dt>
+          <dd>
+            <span>{{ servicioRef.direccion }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.municipio">Municipio</span></dt>
+          <dd>
+            <span>{{ servicioRef.municipio }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.notas">Notas</span></dt>
+          <dd>
+            <span>{{ servicioRef.notas }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.precioTotal">Precio Total</span></dt>
+          <dd>
+            <span>{{ servicioRef.precioTotal }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.descuento">Descuento</span></dt>
+          <dd>
+            <span>{{ servicioRef.descuento }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.cliente">Cliente</span></dt>
+          <dd>
+            @if (servicio()!.cliente) {
+              <div>
+                <a [routerLink]="['/cliente', servicio()!.cliente?.id, 'view']">{{ servicioRef.cliente?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.tarifa">Tarifa</span></dt>
+          <dd>
+            @if (servicio()!.tarifa) {
+              <div>
+                <a [routerLink]="['/tarifa', servicio()!.tarifa?.id, 'view']">{{ servicioRef.tarifa?.id }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="mokealApp.servicio.trabajadores">Trabajadores</span></dt>
+          <dd>
+            @for (trabajadores of servicioRef.trabajadoreses; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/trabajador', trabajadores.id, 'view']">{{ trabajadores?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/servicio', servicioRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

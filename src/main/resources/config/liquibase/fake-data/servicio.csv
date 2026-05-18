@@ -1,0 +1,31 @@
+id;tipo_servicio;zona;frecuencia;fecha;hora_inicio;duracion_horas;num_trabajadores;estado;direccion;municipio;notas;precio_total;descuento;cliente_id
+1;OFICINA;MADRID_CAPITAL;PUNTUAL;2026-05-17;whene;19764.43;5076;CONFIRMADO;self-assured depend swing;furthermore once;scarily until;20574.79;9192.21;1
+2;CHALET;COMUNIDAD_MADRID;QUINCENAL;2026-05-17;thorn;464.42;24381;CANCELADO;near tangible;settle;snoop fencing;23898.59;17749.4;2
+3;EVENTO;MADRID_CAPITAL;MENSUAL;2026-05-18;marat;3393.1;31990;EN_CURSO;slowly during fooey;yuck instantly;whack ferret;11868.1;31708.03;3
+4;POST_MUDANZA;COMUNIDAD_MADRID;MENSUAL;2026-05-18;refla;24275.66;14721;EN_CURSO;a;duh;ah entrench;20539.02;18859;4
+5;EVENTO;FUERA_COMUNIDAD;SEMANAL;2026-05-18;throb;19374.53;9470;COMPLETADO;provider yuck oh;among than anenst;other;4422.59;9154.82;5
+6;POST_OBRA;FUERA_COMUNIDAD;SEMANAL;2026-05-18;vacan;14629.72;16184;PENDIENTE;rejoin tinderbox;zowie likewise;successfully opposite foretell;4081.51;25688.38;6
+7;EVENTO;COMUNIDAD_MADRID;SEMANAL;2026-05-18;thund;6369.48;1931;COMPLETADO;disarm conservation gee;privilege well-groomed;brr for;9957.52;19438.61;7
+8;POST_OBRA;MADRID_CAPITAL;SEMANAL;2026-05-17;tradi;21160.1;25633;EN_CURSO;who even;heavy;excepting phew molasses;31255.03;31032.12;8
+9;EVENTO;COMUNIDAD_MADRID;QUINCENAL;2026-05-18;even ;3740.56;20123;CONFIRMADO;creature parched;vain even athwart;newsstand chunder noisily;28565.67;18982.36;9
+10;CHALET;MADRID_CAPITAL;PUNTUAL;2026-05-18;alb;15144.09;26462;CONFIRMADO;ew eek;gleefully;prejudge abaft;27936.59;22134.55;10
+11;POST_MUDANZA;MADRID_CAPITAL;PUNTUAL;2026-05-17;accel;25639.39;5489;COMPLETADO;left interestingly;prestigious;mid;8505.74;10242.26;11
+12;OFICINA;COMUNIDAD_MADRID;PUNTUAL;2026-05-18;leagu;22346.72;4360;COMPLETADO;unimpressively;beep;obnoxiously spectacles flash;4580.16;10687.87;12
+13;POST_MUDANZA;FUERA_COMUNIDAD;MENSUAL;2026-05-18;right;8408.97;12566;CANCELADO;enthusiastically mid upward;flood immediately;ew zowie progress;28647.95;21827.24;13
+14;OFICINA;FUERA_COMUNIDAD;MENSUAL;2026-05-18;like;25015.47;22507;CANCELADO;justly while maul;hydrolyse digit shameless;honesty;5843.28;10067.08;14
+15;EVENTO;MADRID_CAPITAL;MENSUAL;2026-05-18;ravio;13026.96;31685;CONFIRMADO;oval;gown;overload yet;26930.63;13897.97;15
+16;POST_MUDANZA;MADRID_CAPITAL;PUNTUAL;2026-05-17;limpi;28640.45;2041;PENDIENTE;upbeat;abnormally vibraphone;circa toaster following;26146.19;16703.11;16
+17;OFICINA;MADRID_CAPITAL;MENSUAL;2026-05-17;than ;9141.31;12760;PENDIENTE;although what;against um hourly;lumpy;13275.66;22315.06;17
+18;OFICINA;COMUNIDAD_MADRID;QUINCENAL;2026-05-17;light;24485.18;8721;CANCELADO;however foretell reassuringly;yahoo stupendous edge;phooey er;31217.31;25602.52;18
+19;HOGAR;FUERA_COMUNIDAD;PUNTUAL;2026-05-18;again;9073.34;19953;PENDIENTE;above hidden on;off fatal definite;suddenly quaintly orderly;12885.34;17909.71;19
+20;CHALET;MADRID_CAPITAL;SEMANAL;2026-05-17;nauti;21964.96;27055;CONFIRMADO;inveigle on evil;bah;vibraphone blank;4477.17;7985.14;20
+21;POST_OBRA;MADRID_CAPITAL;PUNTUAL;2026-05-17;befor;29742.49;4337;CONFIRMADO;lean hence;geez;that;21710;28685.29;21
+22;CHALET;COMUNIDAD_MADRID;SEMANAL;2026-05-18;vibra;18829.52;18300;PENDIENTE;so;retool besides;once;10777.78;24447.77;22
+23;POST_OBRA;MADRID_CAPITAL;MENSUAL;2026-05-17;onto ;13652.39;11231;CANCELADO;unpleasant;electric likewise;off throughout;16261.41;3779.41;23
+24;POST_OBRA;COMUNIDAD_MADRID;MENSUAL;2026-05-18;which;81.61;22787;CONFIRMADO;obnoxiously;micromanage wretched against;know upsell;111.6;3421.48;24
+25;CHALET;FUERA_COMUNIDAD;PUNTUAL;2026-05-18;merry;23253.53;12173;PENDIENTE;although despite;wedding;supposing bah polyester;9541.46;20408.87;25
+26;HOGAR;FUERA_COMUNIDAD;MENSUAL;2026-05-18;makin;22863.74;28242;EN_CURSO;making where;brisk distant;lawful owlishly chime;8066.4;26694.45;26
+27;POST_OBRA;COMUNIDAD_MADRID;QUINCENAL;2026-05-17;under;3063.67;1051;EN_CURSO;scaly;how messy mortally;upon discrete;24219.18;25418.7;27
+28;OFICINA;COMUNIDAD_MADRID;SEMANAL;2026-05-17;onto ;11915.5;17487;CANCELADO;tremendously;refute an;sharply bashfully;24104.45;15817.74;28
+29;EVENTO;FUERA_COMUNIDAD;SEMANAL;2026-05-18;atomi;30623.27;1611;CONFIRMADO;overdue before;stunning between oof;while instead briefly;32197.33;24641.84;29
+30;OFICINA;MADRID_CAPITAL;SEMANAL;2026-05-17;where;23447.99;27634;COMPLETADO;vivacious fuzzy forenenst;as close giving;to millet vice;11275.1;30082.99;30

@@ -1,0 +1,59 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (trabajador(); as trabajadorRef) {
+      <div>
+        <h2 data-cy="trabajadorDetailsHeading"><span jhiTranslate="mokealApp.trabajador.detail.title">Trabajador</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ trabajadorRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.trabajador.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ trabajadorRef.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.trabajador.telefono">Telefono</span></dt>
+          <dd>
+            <span>{{ trabajadorRef.telefono }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.trabajador.email">Email</span></dt>
+          <dd>
+            <span>{{ trabajadorRef.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.trabajador.activo">Activo</span></dt>
+          <dd>
+            <span>{{ trabajadorRef.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.trabajador.notas">Notas</span></dt>
+          <dd>
+            <span>{{ trabajadorRef.notas }}</span>
+          </dd>
+          <dt><span jhiTranslate="mokealApp.trabajador.servicios">Servicios</span></dt>
+          <dd>
+            @for (servicios of trabajadorRef.servicioses; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/servicio', servicios.id, 'view']">{{ servicios?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left" />&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+        </button>
+
+        <button type="button" [routerLink]="['/trabajador', trabajadorRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt" />&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

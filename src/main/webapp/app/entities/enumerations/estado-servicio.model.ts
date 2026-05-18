@@ -1,0 +1,11 @@
+export enum EstadoServicio {
+  PENDIENTE = 'PENDIENTE',
+
+  CONFIRMADO = 'CONFIRMADO',
+
+  EN_CURSO = 'EN_CURSO',
+
+  COMPLETADO = 'COMPLETADO',
+
+  CANCELADO = 'CANCELADO',
+}

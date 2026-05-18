@@ -1,0 +1,11 @@
+{
+  "mokealApp": {
+    "EstadoFactura": {
+      "null": "",
+      "BORRADOR": "BORRADOR",
+      "EMITIDA": "EMITIDA",
+      "PAGADA": "PAGADA",
+      "CANCELADA": "CANCELADA"
+    }
+  }
+}

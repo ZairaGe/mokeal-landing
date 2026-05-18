@@ -1,0 +1,11 @@
+{
+  "mokealApp": {
+    "Frecuencia": {
+      "null": "",
+      "PUNTUAL": "PUNTUAL",
+      "SEMANAL": "SEMANAL",
+      "QUINCENAL": "QUINCENAL",
+      "MENSUAL": "MENSUAL"
+    }
+  }
+}

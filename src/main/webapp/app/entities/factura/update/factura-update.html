@@ -1,0 +1,239 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-factura-heading" data-cy="FacturaCreateUpdateHeading" jhiTranslate="mokealApp.factura.home.createOrEditLabel">
+        Crear o editar Factura
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="global.field.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let numeroRef = editForm.get('numero')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_numero" jhiTranslate="mokealApp.factura.numero">Numero</label>
+          <input type="text" class="form-control" name="numero" id="field_numero" data-cy="numero" formControlName="numero" />
+          @if (numeroRef.invalid && (numeroRef.dirty || numeroRef.touched)) {
+            <div>
+              @if (editForm.get('numero')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              @if (editForm.get('numero')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '30' }"
+                  >Este campo no puede superar más de 30 caracteres.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        @let fechaEmisionRef = editForm.get('fechaEmision')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaEmision" jhiTranslate="mokealApp.factura.fechaEmision">Fecha Emision</label>
+          <div class="input-group">
+            <input
+              id="field_fechaEmision"
+              data-cy="fechaEmision"
+              type="text"
+              class="form-control"
+              name="fechaEmision"
+              ngbDatepicker
+              #fechaEmisionDp="ngbDatepicker"
+              formControlName="fechaEmision"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaEmisionDp.toggle()"><fa-icon icon="calendar-alt" /></button>
+          </div>
+          @if (fechaEmisionRef.invalid && (fechaEmisionRef.dirty || fechaEmisionRef.touched)) {
+            <div>
+              @if (editForm.get('fechaEmision')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaVencimiento" jhiTranslate="mokealApp.factura.fechaVencimiento">Fecha Vencimiento</label>
+          <div class="input-group">
+            <input
+              id="field_fechaVencimiento"
+              data-cy="fechaVencimiento"
+              type="text"
+              class="form-control"
+              name="fechaVencimiento"
+              ngbDatepicker
+              #fechaVencimientoDp="ngbDatepicker"
+              formControlName="fechaVencimiento"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaVencimientoDp.toggle()"><fa-icon icon="calendar-alt" /></button>
+          </div>
+        </div>
+
+        @let baseImponibleRef = editForm.get('baseImponible')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_baseImponible" jhiTranslate="mokealApp.factura.baseImponible">Base Imponible</label>
+          <input
+            type="number"
+            class="form-control"
+            name="baseImponible"
+            id="field_baseImponible"
+            data-cy="baseImponible"
+            formControlName="baseImponible"
+          />
+          @if (baseImponibleRef.invalid && (baseImponibleRef.dirty || baseImponibleRef.touched)) {
+            <div>
+              @if (editForm.get('baseImponible')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('baseImponible')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let ivaRef = editForm.get('iva')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_iva" jhiTranslate="mokealApp.factura.iva">Iva</label>
+          <input type="number" class="form-control" name="iva" id="field_iva" data-cy="iva" formControlName="iva" />
+          @if (ivaRef.invalid && (ivaRef.dirty || ivaRef.touched)) {
+            <div>
+              @if (editForm.get('iva')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('iva')?.errors?.number" jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let totalRef = editForm.get('total')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_total" jhiTranslate="mokealApp.factura.total">Total</label>
+          <input type="number" class="form-control" name="total" id="field_total" data-cy="total" formControlName="total" />
+          @if (totalRef.invalid && (totalRef.dirty || totalRef.touched)) {
+            <div>
+              @if (editForm.get('total')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('total')?.errors?.number" jhiTranslate="entity.validation.number"
+                >Este campo debe ser un número.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let estadoRef = editForm.get('estado')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_estado" jhiTranslate="mokealApp.factura.estado">Estado</label>
+          <select class="form-control" name="estado" formControlName="estado" id="field_estado" data-cy="estado">
+            <option [ngValue]="null">{{ 'mokealApp.EstadoFactura.null' | translate }}</option>
+            @for (estadoFactura of estadoFacturaValues; track $index) {
+              <option [value]="estadoFactura">{{ 'mokealApp.EstadoFactura.' + estadoFactura | translate }}</option>
+            }
+          </select>
+          @if (estadoRef.invalid && (estadoRef.dirty || estadoRef.touched)) {
+            <div>
+              @if (editForm.get('estado')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let notasRef = editForm.get('notas')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_notas" jhiTranslate="mokealApp.factura.notas">Notas</label>
+          <input type="text" class="form-control" name="notas" id="field_notas" data-cy="notas" formControlName="notas" />
+          @if (notasRef.invalid && (notasRef.dirty || notasRef.touched)) {
+            <div>
+              @if (editForm.get('notas')?.errors?.maxlength) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.maxlength" [translateValues]="{ max: '500' }"
+                  >Este campo no puede superar más de 500 caracteres.</small
+                >
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_servicio" jhiTranslate="mokealApp.factura.servicio">Servicio</label>
+          <select
+            class="form-control"
+            id="field_servicio"
+            data-cy="servicio"
+            name="servicio"
+            formControlName="servicio"
+            [compareWith]="compareServicio"
+          >
+            @if (!editForm.get('servicio')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (servicioOption of serviciosSharedCollection(); track $index) {
+              <option [ngValue]="servicioOption">{{ servicioOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['servicio'])!.invalid && (editForm.get(['servicio'])!.dirty || editForm.get(['servicio'])!.touched)) {
+          <div>
+            @if (editForm.get(['servicio'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cliente" jhiTranslate="mokealApp.factura.cliente">Cliente</label>
+          <select
+            class="form-control"
+            id="field_cliente"
+            data-cy="cliente"
+            name="cliente"
+            formControlName="cliente"
+            [compareWith]="compareCliente"
+          >
+            @if (!editForm.get('cliente')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (clienteOption of clientesSharedCollection(); track $index) {
+              <option [ngValue]="clienteOption">{{ clienteOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['cliente'])!.invalid && (editForm.get(['cliente'])!.dirty || editForm.get(['cliente'])!.touched)) {
+          <div>
+            @if (editForm.get(['cliente'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">Este campo es obligatorio.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban" />&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving()"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save" />&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

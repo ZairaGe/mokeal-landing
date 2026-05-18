@@ -1,0 +1,33 @@
+{
+  "mokealApp": {
+    "factura": {
+      "home": {
+        "title": "Facturas",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Factura",
+        "createOrEditLabel": "Crear o editar Factura",
+        "notFound": "Ningún Facturas encontrado"
+      },
+      "created": "Un nuevo Factura ha sido creado con el identificador {{ param }}",
+      "updated": "Un Factura ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Factura ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Factura {{ id }}?"
+      },
+      "detail": {
+        "title": "Factura"
+      },
+      "id": "ID",
+      "numero": "Numero",
+      "fechaEmision": "Fecha Emision",
+      "fechaVencimiento": "Fecha Vencimiento",
+      "baseImponible": "Base Imponible",
+      "iva": "Iva",
+      "total": "Total",
+      "estado": "Estado",
+      "notas": "Notas",
+      "servicio": "Servicio",
+      "cliente": "Cliente"
+    }
+  }
+}
