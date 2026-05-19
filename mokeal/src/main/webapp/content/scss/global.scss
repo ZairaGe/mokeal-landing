@@ -1,6 +1,7 @@
 @import 'bootstrap-variables';
 @import 'bootstrap/scss/functions';
 @import 'bootstrap/scss/variables';
+@import 'leaflet/dist/leaflet.css';
 
 /* ==============================================================
 Bootstrap tweaks
@@ -12,6 +13,13 @@ h2,
 h3,
 h4 {
   font-weight: 300;
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 8px;
+  z-index: 1; /* Para que no tape los desplegables del menú */
 }
 
 /* Increase contrast of links to get 100% on Lighthouse Accessibility Audit. Override this color if you want to change the link color, or use a Bootswatch theme */

@@ -16,6 +16,8 @@ export interface IServicio {
   fecha?: dayjs.Dayjs | null;
   horaInicio?: string | null;
   duracionHoras?: number | null;
+  latitud?: number | null;
+  longitud?: number | null;
   numTrabajadores?: number | null;
   estado?: keyof typeof EstadoServicio | null;
   direccion?: string | null;
