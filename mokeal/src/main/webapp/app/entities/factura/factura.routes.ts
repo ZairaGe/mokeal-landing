@@ -11,6 +11,7 @@ const facturaRoute: Routes = [
     loadComponent: () => import('./list/factura').then(m => m.Factura),
     data: {
       defaultSort: `id,${ASC}`,
+      authorities: ['ROLE_ADMIN'],
     },
     canActivate: [UserRouteAccessService],
   },
@@ -20,6 +21,9 @@ const facturaRoute: Routes = [
     resolve: {
       factura: FacturaResolve,
     },
+    data: {
+      authorities: ['ROLE_ADMIN'],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -28,6 +32,9 @@ const facturaRoute: Routes = [
     resolve: {
       factura: FacturaResolve,
     },
+    data: {
+      authorities: ['ROLE_ADMIN'],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -35,6 +42,9 @@ const facturaRoute: Routes = [
     loadComponent: () => import('./update/factura-update').then(m => m.FacturaUpdate),
     resolve: {
       factura: FacturaResolve,
+    },
+    data: {
+      authorities: ['ROLE_ADMIN'],
     },
     canActivate: [UserRouteAccessService],
   },

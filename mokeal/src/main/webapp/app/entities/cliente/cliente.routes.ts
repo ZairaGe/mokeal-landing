@@ -11,6 +11,7 @@ const clienteRoute: Routes = [
     loadComponent: () => import('./list/cliente').then(m => m.Cliente),
     data: {
       defaultSort: `id,${ASC}`,
+      authorities: ['ROLE_ADMIN'],
     },
     canActivate: [UserRouteAccessService],
   },
@@ -20,6 +21,9 @@ const clienteRoute: Routes = [
     resolve: {
       cliente: ClienteResolve,
     },
+    data: {
+      authorities: ['ROLE_ADMIN'],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -28,6 +32,9 @@ const clienteRoute: Routes = [
     resolve: {
       cliente: ClienteResolve,
     },
+    data: {
+      authorities: ['ROLE_ADMIN'],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -35,6 +42,9 @@ const clienteRoute: Routes = [
     loadComponent: () => import('./update/cliente-update').then(m => m.ClienteUpdate),
     resolve: {
       cliente: ClienteResolve,
+    },
+    data: {
+      authorities: ['ROLE_ADMIN'],
     },
     canActivate: [UserRouteAccessService],
   },

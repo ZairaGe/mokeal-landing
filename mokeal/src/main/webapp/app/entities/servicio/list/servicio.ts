@@ -3,7 +3,7 @@ import { Component, OnInit, effect, inject, signal, untracked } from '@angular/c
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
-
+import { NgClass } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap/pagination';
@@ -26,6 +26,7 @@ import { IServicio } from '../servicio.model';
 @Component({
   selector: 'jhi-servicio',
   templateUrl: './servicio.html',
+  styleUrl: './servicio.scss',
   imports: [
     RouterLink,
     FormsModule,
@@ -40,6 +41,7 @@ import { IServicio } from '../servicio.model';
     Filter,
     NgbPagination,
     ItemCount,
+    NgClass,
   ],
 })
 export class Servicio implements OnInit {
@@ -165,5 +167,47 @@ export class Servicio implements OnInit {
       relativeTo: this.activatedRoute,
       queryParams: queryParamsObj,
     });
+  }
+  getTipoLabel(tipo: string | null | undefined): string {
+    const labels: Record<string, string> = {
+      HOGAR: 'Hogar',
+      OFICINA: 'Oficina',
+      CHALET: 'Chalet',
+      EVENTO: 'Evento',
+      POST_OBRA: 'Post-obra',
+      POST_MUDANZA: 'Post-mudanza',
+    };
+    return tipo ? (labels[tipo] ?? tipo) : '—';
+  }
+
+  getEstadoLabel(estado: string | null | undefined): string {
+    const labels: Record<string, string> = {
+      PENDIENTE: 'Pendiente',
+      CONFIRMADO: 'Confirmado',
+      EN_CURSO: 'En curso',
+      COMPLETADO: 'Completado',
+      CANCELADO: 'Cancelado',
+    };
+    return estado ? (labels[estado] ?? estado) : '—';
+  }
+
+  getEstadoClass(estado: string | null | undefined): string {
+    const classes: Record<string, string> = {
+      PENDIENTE: 'b-pendiente',
+      CONFIRMADO: 'b-confirmado',
+      EN_CURSO: 'b-fuera',
+      COMPLETADO: 'b-confirmado',
+      CANCELADO: 'b-pendiente',
+    };
+    return estado ? (classes[estado] ?? '') : '';
+  }
+
+  getZonaDotClass(zona: string | null | undefined): string {
+    const classes: Record<string, string> = {
+      MADRID_CAPITAL: 'dot-madrid',
+      COMUNIDAD_MADRID: 'dot-fuera',
+      FUERA_COMUNIDAD: 'dot-evento',
+    };
+    return zona ? (classes[zona] ?? '') : '';
   }
 }

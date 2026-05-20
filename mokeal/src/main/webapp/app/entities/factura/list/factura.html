@@ -1,191 +1,124 @@
-<div>
-  <h2 id="page-heading" data-cy="FacturaHeading">
-    <span jhiTranslate="mokealApp.factura.home.title">Facturas</span>
-
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading()">
-        <fa-icon icon="sync" [animation]="isLoading() ? 'spin' : undefined" />
-        <span jhiTranslate="mokealApp.factura.home.refreshListLabel">Refrescar lista</span>
-      </button>
-
-      <button
-        id="jh-create-entity"
-        data-cy="entityCreateButton"
-        class="btn btn-primary jh-create-entity create-factura"
-        [routerLink]="['/factura/new']"
-      >
-        <fa-icon icon="plus" />
-        <span jhiTranslate="mokealApp.factura.home.createLabel">Crear nuevo Factura</span>
-      </button>
+<div class="container-fluid px-4 py-4 bg-mokeal">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h4 class="fw-semibold mb-1">Facturas</h4>
+      <div class="text-muted small">{{ facturas().length }} facturas encontradas</div>
     </div>
-  </h2>
+    <div class="d-flex gap-2">
+      <button class="btn btn-sm btn-outline-secondary" (click)="load()" [disabled]="isLoading()">
+        <fa-icon icon="sync" [animation]="isLoading() ? 'spin' : undefined" />
+      </button>
+      <a class="btn btn-sm btn-primary" [routerLink]="['/factura/new']"> <fa-icon icon="plus" /> Nueva factura </a>
+    </div>
+  </div>
 
   <jhi-alert-error />
-
   <jhi-alert />
-
   <jhi-filter [filters]="filters" />
 
   @if (facturas().length === 0) {
-    <div class="alert alert-warning" id="no-result">
-      <span jhiTranslate="mokealApp.factura.home.notFound">Ningún Facturas encontrado</span>
+    <div class="content-card text-center py-5 text-muted">
+      No hay facturas registradas aún.
+      <div class="mt-3">
+        <a [routerLink]="['/factura/new']" class="btn btn-primary btn-sm">Crear primera factura</a>
+      </div>
     </div>
   } @else {
-    <div class="table-responsive table-entities" id="entities">
-      <table class="table table-striped" aria-describedby="page-heading">
-        <thead>
-          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
-            <th scope="col" jhiSortBy="id">
-              <div class="d-flex">
-                <span jhiTranslate="global.field.id">ID</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="numero">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.numero">Numero</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="fechaEmision">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.fechaEmision">Fecha Emision</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="fechaVencimiento">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.fechaVencimiento">Fecha Vencimiento</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="baseImponible">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.baseImponible">Base Imponible</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="iva">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.iva">Iva</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="total">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.total">Total</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="estado">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.estado">Estado</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="notas">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.notas">Notas</span>
-
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="servicio.id">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.servicio">Servicio</span>
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="cliente.id">
-              <div class="d-flex">
-                <span jhiTranslate="mokealApp.factura.cliente">Cliente</span>
-                <fa-icon class="p-1" icon="sort" />
-              </div>
-            </th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (factura of facturas(); track trackId(factura)) {
-            <tr data-cy="entityTable">
-              <td>
-                <a [routerLink]="['/factura', factura.id, 'view']">{{ factura.id }}</a>
-              </td>
-              <td>{{ factura.numero }}</td>
-              <td>{{ factura.fechaEmision | formatMediumDate }}</td>
-              <td>{{ factura.fechaVencimiento | formatMediumDate }}</td>
-              <td>{{ factura.baseImponible }}</td>
-              <td>{{ factura.iva }}</td>
-              <td>{{ factura.total }}</td>
-              <td [jhiTranslate]="'mokealApp.EstadoFactura.' + (factura.estado ?? 'null')">
-                {{
-                  { null: '', BORRADOR: 'BORRADOR', EMITIDA: 'EMITIDA', PAGADA: 'PAGADA', CANCELADA: 'CANCELADA' }[factura.estado ?? 'null']
-                }}
-              </td>
-              <td>{{ factura.notas }}</td>
-              <td>
-                @if (factura.servicio) {
-                  <div>
-                    <a [routerLink]="['/servicio', factura.servicio.id, 'view']">{{ factura.servicio.id }}</a>
-                  </div>
-                }
-              </td>
-              <td>
-                @if (factura.cliente) {
-                  <div>
-                    <a [routerLink]="['/cliente', factura.cliente.id, 'view']">{{ factura.cliente.id }}</a>
-                  </div>
-                }
-              </td>
-              <td class="text-end">
-                <div class="btn-group">
-                  <a [routerLink]="['/factura', factura.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
-                    <fa-icon icon="eye" />
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
-                  </a>
-
-                  <a [routerLink]="['/factura', factura.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
-                    <fa-icon icon="pencil-alt" />
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
-                  </a>
-
-                  <button type="submit" (click)="delete(factura)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                    <fa-icon icon="times" />
-                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
-                  </button>
-                </div>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
+    <!-- Resumen rápido -->
+    <div class="row g-3 mb-4">
+      <div class="col-md-3">
+        <div class="metric-card">
+          <div class="metric-label">Total facturado</div>
+          <div class="metric-value">€ {{ getTotalFacturado() | number: '1.0-0' }}</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="metric-card">
+          <div class="metric-label">Cobrado</div>
+          <div class="metric-value" style="color: #1d9e75">€ {{ getTotalPorEstado('PAGADA') | number: '1.0-0' }}</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="metric-card">
+          <div class="metric-label">Pendiente</div>
+          <div class="metric-value" style="color: #e24b4a">€ {{ getTotalPendiente() | number: '1.0-0' }}</div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="metric-card">
+          <div class="metric-label">Borradores</div>
+          <div class="metric-value">{{ getCountPorEstado('BORRADOR') }}</div>
+        </div>
+      </div>
     </div>
-  }
-  @if (facturas().length > 0) {
-    <div>
-      <div class="d-flex justify-content-center">
-        <jhi-item-count [params]="{ page: page(), totalItems: totalItems(), itemsPerPage: itemsPerPage() }" />
-      </div>
 
-      <div class="d-flex justify-content-center">
-        <ngb-pagination
-          [collectionSize]="totalItems()"
-          [page]="page()"
-          [pageSize]="itemsPerPage()"
-          [maxSize]="5"
-          [rotate]="true"
-          [boundaryLinks]="true"
-          (pageChange)="navigateToPage($event)"
-        />
-      </div>
+    <!-- Lista de facturas -->
+    <div class="factura-list">
+      @for (factura of facturas(); track trackId(factura)) {
+        <div class="factura-row">
+          <div class="factura-numero">
+            <div class="fw-semibold">{{ factura.numero }}</div>
+            <div class="text-muted small">{{ factura.fechaEmision | formatMediumDate }}</div>
+          </div>
+
+          <div class="factura-cliente text-muted small">
+            @if (factura.cliente) {
+              <fa-icon icon="user" class="me-1" />
+              Cliente #{{ factura.cliente.id }}
+            } @else {
+              —
+            }
+          </div>
+
+          <div class="factura-servicio text-muted small">
+            @if (factura.servicio) {
+              <fa-icon icon="calendar" class="me-1" />
+              Servicio #{{ factura.servicio.id }}
+            } @else {
+              —
+            }
+          </div>
+
+          <div class="factura-vencimiento text-muted small">
+            @if (factura.fechaVencimiento) {
+              Vence: {{ factura.fechaVencimiento | formatMediumDate }}
+            }
+          </div>
+
+          <div class="factura-importes">
+            <div class="fw-semibold">€ {{ factura.total }}</div>
+            <div class="text-muted small">IVA: € {{ factura.iva }}</div>
+          </div>
+
+          <div class="factura-estado">
+            <span class="badge-custom" [ngClass]="getEstadoClass(factura.estado)">
+              {{ getEstadoLabel(factura.estado) }}
+            </span>
+          </div>
+
+          <div class="factura-acciones">
+            <a [routerLink]="['/factura', factura.id, 'view']" class="btn btn-sm btn-outline-secondary">Ver</a>
+            <a [routerLink]="['/factura', factura.id, 'edit']" class="btn btn-sm btn-outline-secondary">Editar</a>
+            <button (click)="delete(factura)" class="btn btn-sm btn-outline-danger">
+              <fa-icon icon="times" />
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Paginación -->
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <jhi-item-count [params]="{ page: page(), totalItems: totalItems(), itemsPerPage: itemsPerPage() }" />
+      <ngb-pagination
+        [collectionSize]="totalItems()"
+        [page]="page()"
+        [pageSize]="itemsPerPage()"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      />
     </div>
   }
 </div>

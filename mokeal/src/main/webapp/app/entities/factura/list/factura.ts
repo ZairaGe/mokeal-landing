@@ -3,7 +3,7 @@ import { Component, OnInit, effect, inject, signal, untracked } from '@angular/c
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
-
+import { NgClass, DecimalPipe } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap/pagination';
@@ -26,6 +26,7 @@ import { FacturaService } from '../service/factura.service';
 @Component({
   selector: 'jhi-factura',
   templateUrl: './factura.html',
+  styleUrl: './factura.scss',
   imports: [
     RouterLink,
     FormsModule,
@@ -40,6 +41,8 @@ import { FacturaService } from '../service/factura.service';
     Filter,
     NgbPagination,
     ItemCount,
+    NgClass,
+    DecimalPipe,
   ],
 })
 export class Factura implements OnInit {
@@ -164,5 +167,44 @@ export class Factura implements OnInit {
       relativeTo: this.activatedRoute,
       queryParams: queryParamsObj,
     });
+  }
+  getTotalFacturado(): number {
+    return this.facturas().reduce((acc, f) => acc + (Number(f.total) || 0), 0);
+  }
+
+  getTotalPendiente(): number {
+    return this.facturas()
+      .filter(f => f.estado === 'EMITIDA' || f.estado === 'BORRADOR')
+      .reduce((acc, f) => acc + (Number(f.total) || 0), 0);
+  }
+
+  getTotalPorEstado(estado: string): number {
+    return this.facturas()
+      .filter(f => f.estado === estado)
+      .reduce((acc, f) => acc + (Number(f.total) || 0), 0);
+  }
+
+  getCountPorEstado(estado: string): number {
+    return this.facturas().filter(f => f.estado === estado).length;
+  }
+
+  getEstadoLabel(estado: string | null | undefined): string {
+    const labels: Record<string, string> = {
+      BORRADOR: 'Borrador',
+      EMITIDA: 'Emitida',
+      PAGADA: 'Pagada',
+      CANCELADA: 'Cancelada',
+    };
+    return estado ? (labels[estado] ?? estado) : '—';
+  }
+
+  getEstadoClass(estado: string | null | undefined): string {
+    const classes: Record<string, string> = {
+      BORRADOR: 'b-pendiente',
+      EMITIDA: 'b-fuera',
+      PAGADA: 'b-confirmado',
+      CANCELADA: 'b-pendiente',
+    };
+    return estado ? (classes[estado] ?? '') : '';
   }
 }

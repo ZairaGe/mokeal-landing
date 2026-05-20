@@ -11,6 +11,7 @@ const tarifaRoute: Routes = [
     loadComponent: () => import('./list/tarifa').then(m => m.Tarifa),
     data: {
       defaultSort: `id,${ASC}`,
+      authorities: ['ROLE_ADMIN'],
     },
     canActivate: [UserRouteAccessService],
   },
@@ -20,6 +21,9 @@ const tarifaRoute: Routes = [
     resolve: {
       tarifa: TarifaResolve,
     },
+    data: {
+      authorities: ['ROLE_ADMIN'],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -28,6 +32,9 @@ const tarifaRoute: Routes = [
     resolve: {
       tarifa: TarifaResolve,
     },
+    data: {
+      authorities: ['ROLE_ADMIN'],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -35,6 +42,9 @@ const tarifaRoute: Routes = [
     loadComponent: () => import('./update/tarifa-update').then(m => m.TarifaUpdate),
     resolve: {
       tarifa: TarifaResolve,
+    },
+    data: {
+      authorities: ['ROLE_ADMIN'],
     },
     canActivate: [UserRouteAccessService],
   },

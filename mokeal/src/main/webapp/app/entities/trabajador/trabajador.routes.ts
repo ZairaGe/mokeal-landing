@@ -11,6 +11,7 @@ const trabajadorRoute: Routes = [
     loadComponent: () => import('./list/trabajador').then(m => m.Trabajador),
     data: {
       defaultSort: `id,${ASC}`,
+      authorities: ['ROLE_ADMIN'],
     },
     canActivate: [UserRouteAccessService],
   },
@@ -20,6 +21,9 @@ const trabajadorRoute: Routes = [
     resolve: {
       trabajador: TrabajadorResolve,
     },
+    data: {
+      authorities: ['ROLE_ADMIN'],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -28,6 +32,9 @@ const trabajadorRoute: Routes = [
     resolve: {
       trabajador: TrabajadorResolve,
     },
+    data: {
+      authorities: ['ROLE_ADMIN'],
+    },
     canActivate: [UserRouteAccessService],
   },
   {
@@ -35,6 +42,9 @@ const trabajadorRoute: Routes = [
     loadComponent: () => import('./update/trabajador-update').then(m => m.TrabajadorUpdate),
     resolve: {
       trabajador: TrabajadorResolve,
+    },
+    data: {
+      authorities: ['ROLE_ADMIN'],
     },
     canActivate: [UserRouteAccessService],
   },

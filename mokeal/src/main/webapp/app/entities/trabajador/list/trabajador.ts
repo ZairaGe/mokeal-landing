@@ -2,7 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, WritableSignal, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Data, ParamMap, Router, RouterLink } from '@angular/router';
-
+import { NgClass } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal';
 import { TranslateModule } from '@ngx-translate/core';
@@ -23,6 +23,7 @@ import { ITrabajador } from '../trabajador.model';
 @Component({
   selector: 'jhi-trabajador',
   templateUrl: './trabajador.html',
+  styleUrl: './trabajador.scss',
   imports: [
     RouterLink,
     FormsModule,
@@ -34,6 +35,7 @@ import { ITrabajador } from '../trabajador.model';
     TranslateDirective,
     TranslateModule,
     InfiniteScrollDirective,
+    NgClass,
   ],
 })
 export class Trabajador implements OnInit {
@@ -157,5 +159,14 @@ export class Trabajador implements OnInit {
       relativeTo: this.activatedRoute,
       queryParams: queryParamsObj,
     });
+  }
+  getInitials(nombre: string | null | undefined): string {
+    if (!nombre) return '?';
+    return nombre
+      .split(' ')
+      .slice(0, 2)
+      .map(w => w[0])
+      .join('')
+      .toUpperCase();
   }
 }

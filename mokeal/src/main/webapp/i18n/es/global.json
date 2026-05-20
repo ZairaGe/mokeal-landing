@@ -1,5 +1,6 @@
 {
   "global": {
+    "title": "Mokeal",
     "menu": {
       "home": "Inicio",
       "dashboard": "Panel de Control",
