@@ -8,7 +8,7 @@
       <button class="btn btn-sm btn-outline-secondary" (click)="load()" [disabled]="isLoading()">
         <fa-icon icon="sync" [animation]="isLoading() ? 'spin' : undefined" />
       </button>
-      <a class="btn btn-sm btn-primary" [routerLink]="['/trabajador/new']"> <fa-icon icon="plus" /> Nuevo trabajador </a>
+      <a class="btn btn-sm btn-primary" (click)="openNuevoTrabajador()"> <fa-icon icon="plus" /> Nuevo trabajador </a>
     </div>
   </div>
 
@@ -50,8 +50,8 @@
             }
 
             <div class="d-flex gap-2 mt-3">
-              <a [routerLink]="['/trabajador', trabajador.id, 'view']" class="btn btn-sm btn-outline-secondary flex-grow-1">Ver ficha</a>
-              <a [routerLink]="['/trabajador', trabajador.id, 'edit']" class="btn btn-sm btn-outline-secondary">Editar</a>
+              <button (click)="openVerTrabajador(trabajador)" class="btn btn-sm btn-outline-secondary flex-grow-1">Ver ficha</button>
+              <button (click)="openEditarTrabajador(trabajador)" class="btn btn-sm btn-outline-secondary">Editar</button>
               <button (click)="delete(trabajador)" class="btn btn-sm btn-outline-danger">
                 <fa-icon icon="times" />
               </button>

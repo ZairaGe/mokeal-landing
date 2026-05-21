@@ -3,6 +3,7 @@ import { IServicio } from 'app/entities/servicio/servicio.model';
 export interface ITrabajador {
   id: number;
   nombre?: string | null;
+  direccion?: string | null;
   telefono?: string | null;
   email?: string | null;
   activo?: boolean | null;

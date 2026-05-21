@@ -19,6 +19,8 @@ import { SortByDirective, SortDirective, SortService, type SortState, sortStateS
 import { TrabajadorDeleteDialog } from '../delete/trabajador-delete-dialog';
 import { TrabajadorService } from '../service/trabajador.service';
 import { ITrabajador } from '../trabajador.model';
+import { ModalService, ModalConfig } from 'app/shared/modal/modal.service';
+import { TrabajadorUpdate } from '../update/trabajador-update';
 
 @Component({
   selector: 'jhi-trabajador',
@@ -56,7 +58,8 @@ export class Trabajador implements OnInit {
   protected readonly activatedRoute = inject(ActivatedRoute);
   protected readonly sortService = inject(SortService);
   protected parseLinks = inject(ParseLinks);
-  protected modalService = inject(NgbModal);
+  private modalService = inject(NgbModal);
+  private mokealModalService = inject(ModalService);
 
   constructor() {
     effect(() => {
@@ -90,6 +93,49 @@ export class Trabajador implements OnInit {
 
   loadNextPage(): void {
     this.load();
+  }
+
+  openNuevoTrabajador(): void {
+    const config: ModalConfig = {
+      title: 'Trabajador',
+      icon: '👤',
+      subtitle: 'Datos de contacto y dirección',
+      mode: 'create',
+      showDelete: false,
+      onSave: async () => {
+        this.load();
+      },
+    };
+    this.mokealModalService.open(TrabajadorUpdate, config);
+  }
+
+  openEditarTrabajador(trabajador: ITrabajador): void {
+    const config: ModalConfig = {
+      title: 'Trabajador',
+      icon: '👤',
+      subtitle: trabajador.nombre ?? '',
+      mode: 'edit',
+      showDelete: true,
+      data: { isModal: true, trabajadorId: trabajador.id },
+      onSave: async () => {
+        this.load();
+      },
+      onDelete: async () => {
+        this.delete(trabajador);
+      },
+    };
+    this.mokealModalService.open(TrabajadorUpdate, config);
+  }
+
+  openVerTrabajador(trabajador: ITrabajador): void {
+    const config: ModalConfig = {
+      title: trabajador.nombre ?? 'Trabajador',
+      icon: '👤',
+      subtitle: trabajador.email ?? '',
+      mode: 'view',
+      showDelete: false,
+    };
+    this.mokealModalService.open(TrabajadorUpdate, config);
   }
 
   delete(trabajador: ITrabajador): void {

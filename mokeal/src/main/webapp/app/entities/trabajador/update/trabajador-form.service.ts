@@ -19,6 +19,7 @@ type TrabajadorFormDefaults = Pick<NewTrabajador, 'id' | 'activo' | 'servicioses
 type TrabajadorFormGroupContent = {
   id: FormControl<ITrabajador['id'] | NewTrabajador['id']>;
   nombre: FormControl<ITrabajador['nombre']>;
+  direccion: FormControl<ITrabajador['direccion']>;
   telefono: FormControl<ITrabajador['telefono']>;
   email: FormControl<ITrabajador['email']>;
   activo: FormControl<ITrabajador['activo']>;
@@ -45,6 +46,9 @@ export class TrabajadorFormService {
       ),
       nombre: new FormControl(trabajadorRawValue.nombre, {
         validators: [Validators.required, Validators.maxLength(100)],
+      }),
+      direccion: new FormControl(trabajadorRawValue.direccion, {
+        validators: [Validators.maxLength(255)], // O el límite que tengas en tu BD
       }),
       telefono: new FormControl(trabajadorRawValue.telefono, {
         validators: [Validators.required, Validators.maxLength(20)],

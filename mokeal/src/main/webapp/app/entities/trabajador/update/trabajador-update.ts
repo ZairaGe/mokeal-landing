@@ -32,6 +32,7 @@ export class TrabajadorUpdate implements OnInit {
   protected trabajadorFormService = inject(TrabajadorFormService);
   protected servicioService = inject(ServicioService);
   protected activatedRoute = inject(ActivatedRoute);
+  isModal = false;
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   editForm: TrabajadorFormGroup = this.trabajadorFormService.createTrabajadorFormGroup();
@@ -42,9 +43,10 @@ export class TrabajadorUpdate implements OnInit {
     this.activatedRoute.data.subscribe(({ trabajador }) => {
       this.trabajador = trabajador;
       if (trabajador) {
-        this.updateForm(trabajador);
+        setTimeout(() => {
+          this.updateForm(trabajador);
+        }, 0);
       }
-
       this.loadRelationshipsOptions();
     });
   }
@@ -61,6 +63,18 @@ export class TrabajadorUpdate implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.trabajadorService.update(trabajador));
     }
+  }
+
+  saveFromModal(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (this.editForm.invalid) {
+        this.editForm.markAllAsTouched();
+        reject('Formulario inválido');
+        return;
+      }
+      this.save();
+      resolve();
+    });
   }
 
   protected subscribeToSaveResponse(result: Observable<ITrabajador | null>): void {
