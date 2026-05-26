@@ -325,10 +325,323 @@
       }
     }
   } @else {
-    <div class="text-center mt-5">
-      <h2 class="mb-2">Mokeal</h2>
-      <p class="text-muted mb-4">Gestión de servicios de limpieza profesional</p>
-      <button class="btn btn-primary" (click)="login()">Iniciar sesión</button>
+    <div class="landing-page">
+      <!-- NAV -->
+      <nav>
+        <a href="#" class="nav-logo">Mokeal<span></span></a>
+        <ul class="nav-links">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#precios">Precios</a></li>
+          <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#contacto" class="nav-cta">Contactar</a></li>
+        </ul>
+      </nav>
+      <body>
+        <!-- HERO -->
+        <section class="hero">
+          <div class="hero-left">
+            <div class="hero-eyebrow">Empresa de limpieza · Madrid</div>
+            <h1 class="hero-title">
+              Espacios limpios,<br />
+              <em>vida más fácil</em>
+            </h1>
+            <p class="hero-body">
+              Servicio de limpieza profesional para hogares, oficinas y eventos. Personal seleccionado, horarios a tu medida y resultados
+              que hablan por sí solos.
+            </p>
+            <div class="hero-actions">
+              <a href="#contacto" class="btn-primary">Pedir presupuesto</a>
+              <a href="#servicios" class="btn-ghost">Ver servicios</a>
+            </div>
+
+            <div class="hero-badge-float" style="position: relative; left: 0; bottom: 0; margin-top: 40px; display: inline-block">
+              <div class="hero-badge-num">+200</div>
+              <div class="hero-badge-label">Clientes satisfechos</div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-image-placeholder">
+              <div style="text-align: center; color: rgba(47, 65, 86, 0.25)">
+                <div
+                  style="
+                    font-family: 'Cormorant Garamond', serif;
+                    font-size: 18px;
+                    letter-spacing: 0.2em;
+                    text-transform: uppercase;
+                    margin-top: 40px;
+                  "
+                >
+                  Fotografía del equipo
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-stats-row">
+            <div class="hero-stat">
+              <div class="hero-stat-num">+200</div>
+              <div class="hero-stat-label">Clientes satisfechos</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">5 ★</div>
+              <div class="hero-stat-label">Valoración media</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">3 años</div>
+              <div class="hero-stat-label">De experiencia</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">Madrid</div>
+              <div class="hero-stat-label">Y Comunidad</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SERVICIOS -->
+        <section class="section" id="servicios">
+          <div class="section-narrow">
+            <div class="section-label">Nuestros servicios</div>
+            <h2 class="section-title">¿Qué necesitas <em>limpiar</em>?</h2>
+            <div class="services-grid">
+              <div class="service-item">
+                <div class="service-num">01</div>
+                <div class="service-icon-wrap">🏠</div>
+                <div class="service-name">Hogar</div>
+                <p class="service-desc">Pisos, casas y áticos. Limpieza regular o puntual adaptada a tus horarios.</p>
+              </div>
+              <div class="service-item">
+                <div class="service-num">02</div>
+                <div class="service-icon-wrap">🏢</div>
+                <div class="service-name">Oficinas</div>
+                <p class="service-desc">Espacios de trabajo limpios y ordenados. Sin interrumpir tu actividad.</p>
+              </div>
+              <div class="service-item">
+                <div class="service-num">03</div>
+                <div class="service-icon-wrap">🎉</div>
+                <div class="service-name">Eventos</div>
+                <p class="service-desc">Bodas, comuniones y fiestas. Antes, durante y después del evento.</p>
+              </div>
+              <div class="service-item">
+                <div class="service-num">04</div>
+                <div class="service-icon-wrap">🏗️</div>
+                <div class="service-name">Post-obra</div>
+                <p class="service-desc">Limpieza a fondo tras reformas o mudanzas. Listo para entrar.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- POR QUÉ ELEGIRNOS -->
+        <section class="why-section">
+          <div class="why-left">
+            <div class="section-label">Por qué elegirnos</div>
+            <h2 class="why-title">Lo que nos <em>hace diferentes</em></h2>
+            <p class="why-body">
+              No somos una empresa más. Somos un equipo pequeño, comprometido con cada casa que entramos y con cada cliente que nos confía
+              su espacio.
+            </p>
+            <a href="#contacto" class="btn-primary">Hablar con nosotros</a>
+          </div>
+          <div class="why-right">
+            <div class="why-item">
+              <div class="why-item-icon">✅</div>
+              <div class="why-item-title">Personal de confianza</div>
+              <p class="why-item-desc">Equipo seleccionado y formado. Nos responsabilizamos de cada visita.</p>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon">📅</div>
+              <div class="why-item-title">Horarios flexibles</div>
+              <p class="why-item-desc">Mañanas, tardes o fines de semana. Nos adaptamos a ti.</p>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon">💬</div>
+              <div class="why-item-title">Comunicación directa</div>
+              <p class="why-item-desc">Siempre sabrás quién va y a qué hora. Sin sorpresas.</p>
+            </div>
+            <div class="why-item">
+              <div class="why-item-icon">💰</div>
+              <div class="why-item-title">Precio justo</div>
+              <p class="why-item-desc">Presupuesto sin compromiso. Sin letra pequeña.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRECIOS -->
+        <section class="pricing-section" id="precios">
+          <div class="section-narrow">
+            <div class="section-label">Tarifas</div>
+            <h2 class="section-title">Precios <em>claros</em> y sin sorpresas</h2>
+            <div class="pricing-grid">
+              <div class="pricing-card">
+                <div class="pricing-zone">Madrid capital</div>
+                <div class="pricing-price">€ 25<span class="pricing-unit">/h</span></div>
+                <div class="pricing-note">Hora adicional desde € 18 · Mín. 2h</div>
+                <div class="pricing-divider"></div>
+                <ul class="pricing-features">
+                  <li>Sin costes de desplazamiento</li>
+                  <li>Hogares y oficinas</li>
+                  <li>Servicios puntuales o periódicos</li>
+                </ul>
+                <a href="#contacto" class="btn-pricing btn-pricing-outline">Pedir presupuesto</a>
+              </div>
+              <div class="pricing-card pricing-card-featured">
+                <div class="pricing-featured-label">Más solicitado</div>
+                <div class="pricing-zone">Comunidad de Madrid</div>
+                <div class="pricing-price">€ 30<span class="pricing-unit">/h</span></div>
+                <div class="pricing-note">Hora adicional desde € 22 · Mín. 3h</div>
+                <div class="pricing-divider"></div>
+                <ul class="pricing-features">
+                  <li>Toda la Comunidad de Madrid</li>
+                  <li>Desplazamiento incluido</li>
+                  <li>Cualquier tipo de espacio</li>
+                </ul>
+                <a href="#contacto" class="btn-pricing btn-pricing-white">Pedir presupuesto</a>
+              </div>
+              <div class="pricing-card">
+                <div class="pricing-zone">Eventos</div>
+                <div class="pricing-price">€ 28<span class="pricing-unit">/h</span></div>
+                <div class="pricing-note">Por persona · Equipo mínimo 2</div>
+                <div class="pricing-divider"></div>
+                <ul class="pricing-features">
+                  <li>Bodas, comuniones, fiestas</li>
+                  <li>Pre y post evento</li>
+                  <li>Presupuesto personalizado</li>
+                </ul>
+                <a href="#contacto" class="btn-pricing btn-pricing-outline">Consultar</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RESEÑAS -->
+        <section class="reviews-section" id="resenas">
+          <div class="section-narrow">
+            <div class="section-label">Reseñas</div>
+            <h2 class="section-title">Lo que dicen <em>nuestros clientes</em></h2>
+            <div class="reviews-grid">
+              <div class="review-card">
+                <div class="review-quote">"</div>
+                <p class="review-text">Llevan meses viniendo a casa y siempre impecable. Muy puntuales y atentas. Repetiré sin duda.</p>
+                <div class="review-footer">
+                  <div class="review-avatar">CM</div>
+                  <div>
+                    <div class="review-name">Carmen M.</div>
+                    <div class="review-loc">Madrid capital</div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                </div>
+              </div>
+              <div class="review-card">
+                <div class="review-quote">"</div>
+                <p class="review-text">Contratamos para la post-comunión de nuestra hija. El salón quedó perfecto en tiempo récord.</p>
+                <div class="review-footer">
+                  <div class="review-avatar">JM</div>
+                  <div>
+                    <div class="review-name">Javier M.</div>
+                    <div class="review-loc">Majadahonda</div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                </div>
+              </div>
+              <div class="review-card">
+                <div class="review-quote">"</div>
+                <p class="review-text">Nuestra oficina lleva un año con ellas. Flexibles con los horarios y nunca han fallado.</p>
+                <div class="review-footer">
+                  <div class="review-avatar">SR</div>
+                  <div>
+                    <div class="review-name">Sara R.</div>
+                    <div class="review-loc">Alcobendas</div>
+                  </div>
+                  <div class="review-stars">★★★★★</div>
+                </div>
+              </div>
+              <div class="review-card">
+                <div class="review-quote">"</div>
+                <p class="review-text">Post-mudanza impecable. La casa quedó lista para entrar el mismo día. Precio muy razonable.</p>
+                <div class="review-footer">
+                  <div class="review-avatar">PG</div>
+                  <div>
+                    <div class="review-name">Pablo G.</div>
+                    <div class="review-loc">Pozuelo</div>
+                  </div>
+                  <div class="review-stars">★★★★☆</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="contact-section" id="contacto">
+          <div>
+            <div class="section-label">Contacto</div>
+            <h2 class="section-title" style="font-size: 42px">Pide tu <em>presupuesto</em></h2>
+            <p style="font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 0">
+              Sin compromiso. Te respondemos en menos de 24 horas.
+            </p>
+            <div class="contact-info-list">
+              <div class="contact-info-row">
+                <div class="contact-info-icon">📞</div>
+                <div>
+                  <div class="contact-info-label">Teléfono</div>
+                  <div class="contact-info-value">6XX XXX XXX</div>
+                </div>
+              </div>
+              <div class="contact-info-row">
+                <div class="contact-info-icon">✉️</div>
+                <div>
+                  <div class="contact-info-label">Email</div>
+                  <div class="contact-info-value">contacto@mokeal.es</div>
+                </div>
+              </div>
+              <div class="contact-info-row">
+                <div class="contact-info-icon">📍</div>
+                <div>
+                  <div class="contact-info-label">Zona de servicio</div>
+                  <div class="contact-info-value">Madrid y Comunidad de Madrid</div>
+                </div>
+              </div>
+              <div class="contact-info-row">
+                <div class="contact-info-icon">🕐</div>
+                <div>
+                  <div class="contact-info-label">Horario</div>
+                  <div class="contact-info-value">Lunes a Sábado, 8:00–20:00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <div class="form-title">Escríbenos</div>
+            <div class="form-row">
+              <div class="form-field"><label>Nombre</label><input type="text" placeholder="Tu nombre" /></div>
+              <div class="form-field"><label>Teléfono</label><input type="tel" placeholder="6XX XXX XXX" /></div>
+            </div>
+            <div class="form-field"><label>Email</label><input type="email" placeholder="tu@correo.com" /></div>
+            <div class="form-field">
+              <label>Tipo de servicio</label>
+              <select>
+                <option value="">Selecciona...</option>
+                <option>Hogar / Piso</option>
+                <option>Oficina / Local</option>
+                <option>Evento</option>
+                <option>Post-obra / Mudanza</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label>Mensaje</label><textarea placeholder="Cuéntanos qué necesitas: zona, tamaño aproximado, frecuencia..."></textarea>
+            </div>
+            <button class="btn-primary" style="width: 100%; padding: 14px; font-size: 12px; letter-spacing: 0.1em">Enviar solicitud</button>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="footer-brand">Mokeal<span></span></div>
+          <div class="footer-text">© 2026 · Empresa de limpieza profesional · Madrid</div>
+          <a href="#" class="footer-link">Acceso empleados →</a>
+        </footer>
+      </body>
     </div>
   }
 </div>
