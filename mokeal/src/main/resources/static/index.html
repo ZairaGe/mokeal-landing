@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MokeAl Limpieza | Servicios Profesionales de Limpieza</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --navy: #2f4156;
+        --teal: #567c8d;
+        --sky-blue: #c8d9e6;
+        --beige: #f5efeb;
+        --white: #ffffff;
+        --accent: #567c8d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        color: var(--navy);
+        background-color: var(--white);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+      }
+
+      /* --- Header --- */
+      header {
+        background-color: var(--navy);
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        height: 60px; /* Ajustar según el logo real */
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 100%;
+        width: auto;
+        filter: brightness(0) invert(1);
+      }
+
+      nav a {
+        color: var(--white);
+        text-decoration: none;
+        margin-left: 30px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: var(--sky-blue);
+      }
+
+      /* --- Hero Section --- */
+      .hero {
+        display: flex;
+        align-items: center;
+        padding: 100px 8%;
+        background: linear-gradient(to right, var(--white) 50%, var(--sky-blue) 100%);
+        min-height: 80vh;
+      }
+
+      .hero-text {
+        flex: 1;
+        padding-right: 50px;
+      }
+      .hero-text h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+      .hero-text p {
+        font-size: 1.2rem;
+        color: var(--teal);
+        margin-bottom: 30px;
+        max-width: 500px;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--navy);
+        color: var(--white);
+        padding: 15px 35px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        transition:
+          transform 0.3s,
+          background 0.3s;
+      }
+
+      .btn:hover {
+        background-color: var(--teal);
+        transform: translateY(-3px);
+      }
+
+      /* --- Servicios --- */
+      .section {
+        padding: 100px 8%;
+        text-align: center;
+      }
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 50px;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .service-card {
+        padding: 40px;
+        background-color: var(--white);
+        border: 1px solid var(--sky-blue);
+        border-radius: 15px;
+        transition: 0.3s;
+      }
+
+      .service-card:hover {
+        border-color: var(--navy);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+      .service-card h3 {
+        margin-bottom: 15px;
+      }
+
+      /* --- Tarifas (Minimalista) --- */
+      .pricing {
+        background-color: var(--beige);
+      }
+      .pricing-grid {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .price-card {
+        background: var(--white);
+        padding: 50px 30px;
+        border-radius: 20px;
+        width: 300px;
+        position: relative;
+      }
+
+      .price-card.featured {
+        border: 2px solid var(--teal);
+        transform: scale(1.05);
+      }
+      .badge {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--teal);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+      }
+
+      .price-val {
+        font-size: 3rem;
+        font-weight: 600;
+        margin: 20px 0;
+        color: var(--navy);
+      }
+      .price-val span {
+        font-size: 1rem;
+        color: var(--teal);
+      }
+
+      /* --- Empresa --- */
+      .about {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        text-align: left;
+      }
+      .about-text {
+        flex: 1;
+      }
+      .about-img {
+        flex: 1;
+        border-radius: 20px;
+        overflow: hidden;
+        background: var(--sky-blue);
+        height: 400px;
+      }
+
+      /* --- Contacto --- */
+      .contact {
+        background-color: var(--navy);
+        color: var(--white);
+        text-align: center;
+        padding: 80px 8%;
+        border-radius: 30px 30px 0 0;
+        margin: 0 20px;
+      }
+      .contact h2 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+      }
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin-bottom: 40px;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        padding: 15px;
+        border-radius: 8px;
+        border: none;
+        font-family: inherit;
+      }
+      .contact-form button {
+        background: var(--sky-blue);
+        color: var(--navy);
+        border: none;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .contact-form button:hover {
+        background: var(--white);
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 50px;
+        }
+        .hero-text {
+          padding-right: 0;
+          margin-bottom: 40px;
+        }
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+        .about {
+          flex-direction: column;
+        }
+        nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <!-- Sustituye 'logo.png' por la ruta de tu imagen -->
+        <img src="logo.png" alt="MokeAl Limpieza" />
+      </div>
+      <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#tarifas">Tarifas</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+      <div class="hero-text">
+        <h1>La Pureza del Orden en Tu Hogar</h1>
+        <p>Servicios de limpieza profesionales con un enfoque minimalista y detallista. Cuidamos tu espacio como si fuera nuestro.</p>
+        <a href="#tarifas" class="btn">Consultar Precios</a>
+      </div>
+      <div class="about-img" style="flex: 0.8; height: 500px">
+        <!-- Espacio para una imagen estética de limpieza -->
+      </div>
+    </section>
+
+    <section id="servicios" class="section">
+      <h2 class="section-title">Nuestros Servicios</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Limpieza General</h3>
+          <p>Mantenimiento recurrente para que nunca tengas que preocuparte por el polvo.</p>
+        </div>
+        <div class="service-card">
+          <h3>Limpieza Profunda</h3>
+          <p>Ideal para cambios de estación o tras mudanzas. No dejamos rincón sin tocar.</p>
+        </div>
+        <div class="service-card">
+          <h3>Oficinas</h3>
+          <p>Entornos de trabajo impecables que fomentan la productividad y el bienestar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tarifas" class="section pricing">
+      <h2 class="section-title">Tarifas Transparentes</h2>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Básico</h3>
+          <div class="price-val">€99<span>/sesión</span></div>
+          <p>Hasta 3 horas de limpieza general. Ideal para apartamentos.</p>
+        </div>
+        <div class="price-card featured">
+          <div class="badge">Oferta Semanal</div>
+          <h3>Pro</h3>
+          <div class="price-val">€189<span>/sesión</span></div>
+          <p>Limpieza profunda. Incluye cristales y zonas de difícil acceso.</p>
+        </div>
+        <div class="price-card">
+          <h3>Business</h3>
+          <div class="price-val">€299<span>/mes</span></div>
+          <p>Plan personalizado para oficinas o locales comerciales.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="empresa" class="section about">
+      <div class="about-text">
+        <h2>Sobre MokeAl</h2>
+        <p>
+          En MokeAl Limpieza creemos que un espacio limpio es el primer paso hacia una mente despejada. Nacimos con la idea de
+          profesionalizar el sector ofreciendo un servicio de alta calidad, puntual y con productos respetuosos con el medio ambiente.
+        </p>
+        <br />
+        <p>Nuestro equipo está formado por profesionales formados para ofrecer discreción y excelencia en cada visita.</p>
+      </div>
+      <div class="about-img">
+        <!-- Imagen de equipo o productos eco -->
+      </div>
+    </section>
+
+    <section id="contacto" class="contact">
+      <h2>¿Hablamos?</h2>
+      <div class="contact-info">
+        <p>📞 +34 600 000 000</p>
+        <p>✉️ hola@mokeallimpieza.com</p>
+      </div>
+      <form class="contact-form">
+        <input type="text" placeholder="Tu Nombre" required />
+        <input type="email" placeholder="Tu Email" required />
+        <textarea rows="4" placeholder="¿En qué podemos ayudarte?" required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+      </form>
+      <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6">© 2024 MokeAl Limpieza. Todos los derechos reservados.</p>
+    </section>
+  </body>
+  <a href="/login" class="btn-admin">Acceso Administración</a>
+</html>

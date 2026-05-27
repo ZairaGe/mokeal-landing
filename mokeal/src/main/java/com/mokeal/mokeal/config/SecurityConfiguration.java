@@ -55,6 +55,7 @@ public class SecurityConfiguration {
             .authorizeHttpRequests(authz ->
                 // prettier-ignore
                 authz
+                    .requestMatchers("/", "/index.html", "/*.js", "/*.css", "/*.png").permitAll()
                     .requestMatchers("/index.html", "/*.js", "/*.txt", "/*.json", "/*.map", "/*.css").permitAll()
                     .requestMatchers("/*.ico", "/*.png", "/*.svg", "/*.webapp").permitAll()
                     .requestMatchers("/content/**").permitAll()
