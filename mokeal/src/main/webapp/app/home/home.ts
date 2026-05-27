@@ -33,7 +33,7 @@ export default class HomeComponent implements OnInit, AfterViewInit {
   private router = inject(Router);
   private map!: L.Map;
 
-  constructor(private servicioService: ServicioService) {}
+  constructor(private servicioService: ServicioService) { }
 
   private initMap(): void {
     this.map = L.map('map').setView([40.4167, -3.7037], 13);
@@ -91,6 +91,10 @@ export default class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.accountService.identity().subscribe(account => {
       this.account.set(account);
+      if (account === null) {
+        this.router.navigate(['/landing']);
+        return;
+      }
       if (account) {
         this.tarifaService.query().subscribe(res => this.tarifas.set(res.body ?? []));
         this.facturaService.query().subscribe(res => this.facturas.set(res.body ?? []));

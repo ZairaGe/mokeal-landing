@@ -1,3 +1,23 @@
+@if (account() !== null && hasAnyAuthority('ROLE_ADMIN')) {
+  <nav data-cy="navbar" class="navbar navbar-dark bg-dark navbar-expand-md admin-controls-bar">
+    <div class="container-fluid">
+      <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed()">
+        <ul class="navbar-nav ms-auto">
+          <li ngbDropdown class="nav-item dropdown pointer">
+            <a class="nav-link dropdown-toggle" ngbDropdownToggle id="entity-menu">Entidades</a>
+            <ul class="dropdown-menu" ngbDropdownMenu>
+              <li><a class="dropdown-item" routerLink="/cliente">Cliente</a></li>
+              <li><a class="dropdown-item" routerLink="/trabajador">Trabajador</a></li>
+              </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()" style="cursor: pointer;">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+}
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">

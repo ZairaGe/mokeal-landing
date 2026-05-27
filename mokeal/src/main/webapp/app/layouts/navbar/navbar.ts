@@ -44,7 +44,7 @@ export default class Navbar implements OnInit {
   readonly openAPIEnabled = signal(false);
   readonly version: string;
   readonly account = inject(AccountService).account;
-
+private accountService = inject(AccountService);
   private readonly loginService = inject(LoginService);
   private readonly translateService = inject(TranslateService);
   private readonly stateStorageService = inject(StateStorageService);
@@ -58,6 +58,10 @@ export default class Navbar implements OnInit {
     } else {
       this.version = '';
     }
+  }
+
+  hasAnyAuthority(authorities: string[] | string): boolean {
+    return this.accountService.hasAnyAuthority(authorities);
   }
 
   ngOnInit(): void {
