@@ -1,0 +1,174 @@
+.mokeal-footer {
+    background-color: #2d3e50;
+    color: white;
+    padding: 2.5rem 0 0 0;
+    font-family: 'Inter', sans-serif;
+
+    .footer-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 2rem;
+        padding: 0 2rem 2.5rem 2rem;
+    }
+
+    .footer-column {
+        h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+            color: white;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            li {
+                margin-bottom: 0.5rem;
+                font-size: 0.85rem;
+                opacity: 0.8;
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    transition: opacity 0.2s;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+
+    .brand-info {
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+
+            .logo-box {
+                background: white;
+                color: #2d3e50;
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+            }
+        }
+
+        .footer-description {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            opacity: 0.8;
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+
+            .social-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.1);
+                    border-color: white;
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.2rem 0;
+        font-size: 0.75rem;
+        opacity: 0.7;
+
+        .bottom-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 1rem;
+
+            a {
+                color: white;
+                text-decoration: none;
+                opacity: 0.7;
+                transition: opacity 0.2s;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .separator {
+            opacity: 0.3;
+            font-size: 0.8rem;
+        }
+
+        .admin-link {
+            font-weight: 500;
+            // Opcional: puedes hacerlo un pelín más oscuro para que sea "secreto"
+            color: rgba(255, 255, 255, 0.6);
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}
+
+
+// Responsive
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+        text-align: center;
+    }
+
+    .brand-info .footer-description {
+        margin: 0 auto 2rem auto;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .bottom-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}
