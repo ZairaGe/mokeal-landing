@@ -1,6 +1,5 @@
-<!-- Navbar -->
 <nav class="navbar" [class.navbar--scrolled]="isScrolled">
-  <div class="navbar__brand">
+  <div class="navbar__brand" routerLink="/" style="cursor: pointer">
     <div class="navbar__logo">
       <img src="./content/images/logo.png" alt="Mokeal logo" />
     </div>
@@ -8,11 +7,11 @@
   </div>
 
   <ul class="navbar__links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#nosotros">Nosotros</a></li>
-    <li><a href="#resenas">Reseñas</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a (click)="scrollToSection('servicios')">Servicios</a></li>
+    <li><a (click)="scrollToSection('nosotros')">Nosotros</a></li>
+    <li><a (click)="scrollToSection('resenas')">Reseñas</a></li>
+    <li><a (click)="scrollToSection('contacto')">Contacto</a></li>
   </ul>
 
-  <button class="btn btn--primary btn--sm">Pedir presupuesto</button>
+  <button class="btn btn--primary btn--sm" (click)="scrollToSection('contacto')">Pedir presupuesto</button>
 </nav>

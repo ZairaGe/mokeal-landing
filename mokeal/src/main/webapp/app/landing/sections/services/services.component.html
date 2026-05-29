@@ -1,20 +1,23 @@
-<!-- Services Section -->
 <section class="services" id="servicios">
+  <!-- Ola superior -->
+  <div class="services__wave-top">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 L1440,0 L1440,30 C1200,70 900,10 600,50 C300,90 150,20 0,45 Z" fill="#f5f0eb" />
+    </svg>
+  </div>
+
   <div class="services__header">
     <h2 class="services__title">Nuestros servicios</h2>
     <p class="services__subtitle">Soluciones de limpieza adaptadas a cada espacio y necesidad.</p>
   </div>
 
+  <!-- Contenedor con las 4 columnas -->
   <div class="services__grid">
 
     <!-- Card 1: Hogar -->
     <div class="service-card">
-      <div class="service-card__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z" />
-          <polyline points="9 21 9 12 15 12 15 21" />
-        </svg>
+      <div class="service-card__image">
+        <img src="./content/images/image.jpg" alt="Limpieza del hogar">
       </div>
       <h3 class="service-card__title">Limpieza del hogar</h3>
       <p class="service-card__description">
@@ -25,15 +28,8 @@
 
     <!-- Card 2: Oficinas -->
     <div class="service-card">
-      <div class="service-card__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="3" width="20" height="18" rx="1" />
-          <path d="M8 3v18" />
-          <path d="M16 3v18" />
-          <path d="M2 9h20" />
-          <path d="M2 15h20" />
-        </svg>
+      <div class="service-card__image">
+        <img src="./content/images/oficina.jpg" alt="Oficinas">
       </div>
       <h3 class="service-card__title">Oficinas</h3>
       <p class="service-card__description">
@@ -44,13 +40,8 @@
 
     <!-- Card 3: Eventos -->
     <div class="service-card">
-      <div class="service-card__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 14.5l-4.9 2.7.9-5.5L4 7.8l5.5-.8z" />
-          <path d="M5 20h14" />
-          <path d="M12 17v3" />
-        </svg>
+      <div class="service-card__image">
+        <img src="./content/images/evento.jpg" alt="Eventos">
       </div>
       <h3 class="service-card__title">Eventos</h3>
       <p class="service-card__description">
@@ -61,14 +52,8 @@
 
     <!-- Card 4: Post-obra -->
     <div class="service-card">
-      <div class="service-card__icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M2 20h20" />
-          <path d="M4 20V10l8-7 8 7v10" />
-          <rect x="9" y="14" width="6" height="6" />
-          <path d="M9 10h6" />
-        </svg>
+      <div class="service-card__image service-card__image--bottom">
+        <img src="./content/images/obra.jpg" alt="Post-obra">
       </div>
       <h3 class="service-card__title">Post-obra</h3>
       <p class="service-card__description">

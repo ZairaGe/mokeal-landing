@@ -44,7 +44,7 @@ export default class Navbar implements OnInit {
   readonly openAPIEnabled = signal(false);
   readonly version: string;
   readonly account = inject(AccountService).account;
-private accountService = inject(AccountService);
+  private accountService = inject(AccountService);
   private readonly loginService = inject(LoginService);
   private readonly translateService = inject(TranslateService);
   private readonly stateStorageService = inject(StateStorageService);
@@ -91,8 +91,28 @@ private accountService = inject(AccountService);
   }
   isScrolled = false;
 
-    @HostListener('window:scroll')
+  @HostListener('window:scroll')
   onScroll(): void {
     this.isScrolled = window.scrollY > 10;
   }
+
+  scrollToSection(id: string): void {
+  if (this.router.url === '/' || this.router.url === '') {
+    // Ya estamos en el landing, scroll directo
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } else {
+    // Estamos en otra página, navegamos al landing primero
+    this.router.navigate(['/']).then(() => {
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300); // espera a que el landing se renderice
+    });
+  }
+}
 }

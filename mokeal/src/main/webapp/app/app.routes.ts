@@ -39,6 +39,10 @@ const routes: Routes = [
     title: 'landing.title',
   },
   {
+    path: 'nosotros',
+    loadComponent: () => import('./about/about.component'),
+  },
+  {
     path: '',
     data: {
       authorities: [Authority.ADMIN],

@@ -1,23 +1,35 @@
-// ─── Variables (comparte las mismas del hero) ─────────────────────────────────
-$color-primary:     #2563eb;
-$color-bg:          #f5f0eb;
-$color-text:        #111827;
-$color-text-muted:  #6b7280;
-$color-border:      #e5e7eb;
-$color-white:       #ffffff;
-$color-icon-bg:     #dbeafe;
+// ─── Variables (Tus mismas variables) ─────────────────────────────────
+$color-primary: #2563eb;
+$color-bg: #f5f0eb;
+$color-text: #111827;
+$color-text-muted: #6b7280;
+$color-border: #e5e7eb;
+$color-white: #ffffff;
 
-$font-family:       'Inter', 'Segoe UI', Arial, sans-serif;
-$radius-md:         14px;
-$radius-lg:         18px;
+$font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+$radius-lg: 18px;
 
 // ─── Services Section ─────────────────────────────────────────────────────────
-
-
 .services {
   background: $color-bg;
-  padding: 80px 48px 96px;
+  padding: 100px 24px 80px; // Un poco más de padding arriba por la ola
   font-family: $font-family;
+  position: relative;
+
+  &__wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    line-height: 0;
+
+    svg {
+      width: 100%;
+      height: 80px;
+      display: block;
+    }
+  }
 
   // ── Header ────────────────────────────────────────────────────────────────
   &__header {
@@ -42,97 +54,90 @@ $radius-lg:         18px;
     line-height: 1.5;
   }
 
-  // ── Grid ──────────────────────────────────────────────────────────────────
+  // ── Grid (Fila de 4) ──────────────────────────────────────────────────────
   &__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr); // Cuatro columnas fijas en escritorio
+    gap: 24px;
     max-width: 1200px;
     margin: 0 auto;
+
+    // Tablets: 2x2
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    // Móviles: 1 columna
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
-// ─── Service Card ─────────────────────────────────────────────────────────────
+// ─── Service Card (Estructura interna vertical) ──────────────────────────────
 .service-card {
   background: $color-white;
   border: 1px solid $color-border;
   border-radius: $radius-lg;
-  padding: 28px 24px 24px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 16px;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
   }
 
-  // ── Icon ──────────────────────────────────────────────────────────────────
-  &__icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: $color-icon-bg;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $color-primary;
-    margin-bottom: 24px;
-    flex-shrink: 0;
+
+  &__image {
+    width: 100%;
+    overflow: hidden;
+    border-radius: calc($radius-lg - 4px); 
+
+    img {
+      width: 100%;
+      aspect-ratio: 3 / 4; 
+      object-fit: cover;
+      display: block;
+    }
+
+    &--bottom {
+      img {
+        object-position: bottom;
+      }
+    }
   }
 
-  // ── Title ─────────────────────────────────────────────────────────────────
   &__title {
     font-family: 'Inter', sans-serif !important;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 700;
     color: $color-text;
     letter-spacing: -0.01em;
-    margin: 0 0 10px;
+    margin: 0;
     line-height: 1.3;
   }
 
-  // ── Description ───────────────────────────────────────────────────────────
   &__description {
     font-size: 14px;
-    line-height: 1.65;
+    line-height: 1.6;
     color: $color-text-muted;
-    margin: 0 0 20px;
-    flex: 1;
+    margin: 0;
+    flex: 1; // Fuerza al botón/precio a quedarse siempre abajo aunque falte texto
   }
 
-  // ── Price / CTA ───────────────────────────────────────────────────────────
   &__price {
     font-size: 14px;
     font-weight: 600;
     color: $color-primary;
     text-decoration: none;
-    margin-top: auto;
+    margin-top: auto; // Lo empuja al fondo de la card
     display: inline-block;
-    transition: opacity 0.15s ease;
 
     &:hover {
-      opacity: 0.75;
-    }
-  }
-}
-
-// ─── Responsive ───────────────────────────────────────────────────────────────
-@media (max-width: 1024px) {
-  .services {
-    &__grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-}
-
-@media (max-width: 640px) {
-  .services {
-    padding: 56px 24px 72px;
-
-    &__grid {
-      grid-template-columns: 1fr;
+      text-decoration: underline;
     }
   }
 }

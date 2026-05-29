@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import Footer from 'app/layouts/footer/footer';
-import NavbarComponent from 'app/layouts/navbar/navbar';  // ajusta la ruta exacta
+import NavbarComponent from 'app/layouts/navbar/navbar';  
 import  HeroComponent  from './sections/hero/hero.component';
 import ServicesComponent  from './sections/services/services.component';
 import  ReviewsComponent  from './sections/reviews/reviews.component';

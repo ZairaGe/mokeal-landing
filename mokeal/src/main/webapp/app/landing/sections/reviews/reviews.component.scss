@@ -148,6 +148,35 @@ $radius-full:      999px;
   }
 }
 
+.reviews__cta {
+  text-align: center;
+  margin-top: 40px;
+
+  &-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: $color-white;
+    border: 1.5px solid $color-border;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-text;
+    text-decoration: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+    svg {
+      color: $color-star;
+    }
+
+    &:hover {
+      border-color: $color-star;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.15);
+    }
+  }
+}
+
 // ─── Responsive ───────────────────────────────────────────────────────────────
 @media (max-width: 768px) {
   .reviews {
