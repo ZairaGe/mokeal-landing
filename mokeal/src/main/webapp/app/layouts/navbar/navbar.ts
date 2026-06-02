@@ -97,22 +97,17 @@ export default class Navbar implements OnInit {
   }
 
   scrollToSection(id: string): void {
-  if (this.router.url === '/' || this.router.url === '') {
-    // Ya estamos en el landing, scroll directo
+    this.collapseNavbar();
     const el = document.getElementById(id);
+
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
+    } else if (this.router.url !== '/') {
+      this.router.navigate(['/'], { fragment: id });
     }
-  } else {
-    // Estamos en otra página, navegamos al landing primero
-    this.router.navigate(['/']).then(() => {
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 300); // espera a que el landing se renderice
-    });
   }
-}
 }

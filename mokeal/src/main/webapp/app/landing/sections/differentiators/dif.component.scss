@@ -13,53 +13,54 @@ $radius-lg: 18px;
 // ─── Differentiators Section ──────────────────────────────────────────────────
 .differentiators {
   background: #7bb8fe;
-  padding: 100px 48px;
+  padding: 150px 48px;
   font-family: $font-family;
-  position: relative; // ← imprescindible para las olas
+  position: relative;
+  overflow: hidden;
 
-  &__wave-top {
+  &__wave-top,
+  &__wave-bottom {
     position: absolute;
-    top: 0;
     left: 0;
     width: 100%;
     height: 80px;
     line-height: 0;
+    z-index: 0;
 
-    svg {
-      width: 100%;
-      height: 80px;
-      display: block;
-      // SIN position: absolute
+    .wave-container {
+      display: flex;
+      width: 200%; // Necesario para el bucle
+      // Aplicamos la animación SOLO aquí
+      animation: wave-move-loop 15s linear infinite;
+
+      svg {
+        width: 100%;
+        height: 80px;
+        display: block;
+        // Eliminada la animación de aquí para que no choque
+      }
     }
+  }
+
+  &__wave-top {
+    top: 0;
   }
 
   &__wave-bottom {
-    position: absolute;
     bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    line-height: 0;
-
-    svg {
-      width: 100%;
-      height: 80px;
-      display: block;
-      // SIN position: absolute
+    .wave-container {
+      animation-direction: reverse; // La de abajo va al revés
+      animation-duration: 25s; // Más lenta para efecto parallax
     }
   }
 
-  @keyframes wave-move {
+  // Única definición de animación, fuera de los selectores de arriba
+  @keyframes wave-move-loop {
     0% {
-      transform: scaleX(1) translateX(0);
+      transform: translateX(0);
     }
-
-    50% {
-      transform: scaleX(1.05) translateX(-20px);
-    }
-
     100% {
-      transform: scaleX(1) translateX(0);
+      transform: translateX(-50%);
     }
   }
 
@@ -75,7 +76,7 @@ $radius-lg: 18px;
     font-size: clamp(32px, 3.5vw, 44px);
     font-weight: 800;
     letter-spacing: -0.03em;
-    color: $color-white;
+    color: $color-bg;
     margin: 0 0 12px;
     line-height: 1.1;
   }
@@ -107,7 +108,9 @@ $radius-lg: 18px;
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 
   &:hover {
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
