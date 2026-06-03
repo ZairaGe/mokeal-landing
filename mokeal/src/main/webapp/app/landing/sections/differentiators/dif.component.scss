@@ -158,10 +158,17 @@ $radius-lg: 18px;
 
 @media (max-width: 640px) {
   .differentiators {
-    padding: 56px 24px 56px;
+    padding: 65px 24px 65px;
 
     &__grid {
       grid-template-columns: 1fr;
     }
+
+    &__wave-top,
+    &__wave-bottom {
+      .wave-container {
+        animation-play-state: paused; 
+      }
   }
+}
 }
