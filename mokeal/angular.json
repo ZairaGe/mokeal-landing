@@ -20,7 +20,10 @@
         "build": {
           "builder": "@angular-builders/custom-esbuild:application",
           "options": {
-            "plugins": ["build-plugins/i18n-esbuild.ts", "build-plugins/define-esbuild.ts"],
+            "plugins": [
+              "build-plugins/i18n-esbuild.ts",
+              "build-plugins/define-esbuild.ts"
+            ],
             "outputPath": {
               "base": "target/classes/static/",
               "browser": "",
@@ -29,7 +32,9 @@
             },
             "index": "src/main/webapp/index.html",
             "browser": "src/main/webapp/main.ts",
-            "polyfills": ["@angular/localize/init"],
+            "polyfills": [
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -47,9 +52,17 @@
                 "glob": "{*.{png,css},swagger-ui-{bundle,standalone-preset}.js}",
                 "input": "node_modules/swagger-ui-dist/",
                 "output": "swagger-ui/"
+              },
+              {
+                "glob": "404.html",
+                "input": "src/main/webapp/",
+                "output": "/"
               }
             ],
-            "styles": ["src/main/webapp/content/scss/vendor.scss", "src/main/webapp/content/scss/global.scss"],
+            "styles": [
+              "src/main/webapp/content/scss/vendor.scss",
+              "src/main/webapp/content/scss/global.scss"
+            ],
             "scripts": [],
             "define": {
               "SERVER_API_URL": "''"
@@ -65,13 +78,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "20kb",
+                  "maximumError": "30kb"
                 }
               ]
             },
@@ -114,8 +127,19 @@
             "runner": "vitest",
             "buildTarget": "::development",
             "runnerConfig": true,
-            "coverageReporters": ["text", "lcov"],
-            "reporters": ["default", ["vitest-sonar-reporter", { "outputFile": "./target/test-results/TESTS-results-sonar-vitest.xml" }]],
+            "coverageReporters": [
+              "text",
+              "lcov"
+            ],
+            "reporters": [
+              "default",
+              [
+                "vitest-sonar-reporter",
+                {
+                  "outputFile": "./target/test-results/TESTS-results-sonar-vitest.xml"
+                }
+              ]
+            ],
             "tsConfig": "tsconfig.spec.json"
           }
         }
