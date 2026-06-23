@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import RevealDirective from 'app/reveal/reveal.directive';
 
 @Component({
   selector: 'app-contact',
@@ -11,6 +12,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule,]
+    FormsModule,
+  RevealDirective]
 })
 export default class ContactComponent {}

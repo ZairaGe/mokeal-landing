@@ -1,19 +1,18 @@
+import { RouterModule } from '@angular/router';
 import { Component, inject } from '@angular/core';
-import { Router, RouterModule } from '@angular/router'; // Importamos Router y RouterModule
-import { TranslateDirective } from 'app/shared/language';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'jhi-footer',
-  templateUrl: './footer.html', // Verifica que el nombre sea exacto
+  templateUrl: './footer.html',
   styleUrl: './footer.scss',
-  imports: [TranslateDirective, RouterModule], // Necesario para navegar
+  imports: [RouterModule],
 })
 export default class Footer {
-  private router = inject(Router); // Solo necesitamos el Router
+  private router = inject(Router);
 
   login(): void {
-    // Te lleva directamente a la página de inicio de sesión
     this.router.navigate(['/login']);
   }
 }

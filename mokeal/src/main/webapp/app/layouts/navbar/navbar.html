@@ -14,7 +14,7 @@
 
   <ul class="navbar__links" [class.is-open]="isMenuOpen">
     <li><a (click)="closeMenuAndScroll('servicios')">Servicios</a></li>
-    <li><a (click)="closeMenuAndScroll('nosotros')">Nosotros</a></li>
+    <li><a routerLink="/nosotros">Nosotros</a></li>
     <li><a (click)="closeMenuAndScroll('resenas')">Reseñas</a></li>
     <li><a (click)="closeMenuAndScroll('contacto')">Contacto</a></li>
   </ul>

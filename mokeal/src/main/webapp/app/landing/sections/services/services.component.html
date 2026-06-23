@@ -6,7 +6,7 @@
     </svg>
   </div>
 
-  <div class="services__header">
+ <div class="services__header" jhiReveal="up">
     <h2 class="services__title">Nuestros servicios</h2>
     <p class="services__subtitle">Soluciones de limpieza adaptadas a cada espacio y necesidad.</p>
   </div>
@@ -15,7 +15,7 @@
   <div class="services__grid">
 
     <!-- Card 1: Hogar -->
-    <div class="service-card">
+    <div class="service-card" jhiReveal="up" [revealDelay]="0">
       <div class="service-card__image">
         <img src="./content/images/image.jpg" alt="Limpieza del hogar">
       </div>
@@ -27,7 +27,7 @@
     </div>
 
     <!-- Card 2: Oficinas -->
-    <div class="service-card">
+    <div class="service-card" jhiReveal="up" [revealDelay]="100">
       <div class="service-card__image">
         <img src="./content/images/oficina.jpg" alt="Oficinas">
       </div>
@@ -39,7 +39,7 @@
     </div>
 
     <!-- Card 3: Eventos -->
-    <div class="service-card">
+    <div class="service-card" jhiReveal="up" [revealDelay]="200">
       <div class="service-card__image">
         <img src="./content/images/evento.jpg" alt="Eventos">
       </div>
@@ -51,7 +51,7 @@
     </div>
 
     <!-- Card 4: Post-obra -->
-    <div class="service-card">
+    <div class="service-card" jhiReveal="up" [revealDelay]="300">
       <div class="service-card__image service-card__image--bottom">
         <img src="./content/images/obra.jpg" alt="Post-obra">
       </div>
