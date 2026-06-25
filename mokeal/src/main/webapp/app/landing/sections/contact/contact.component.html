@@ -80,93 +80,79 @@
   </div>
 
   <!-- Right: Form -->
-  <div class="contact__form-wrapper" jhiReveal="right">
+<div class="contact__form-wrapper" jhiReveal="right">
+  <form class="contact__form" (ngSubmit)="sendEmail()" #contactForm="ngForm">
 
-    <div class="contact__form">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Nombre <span class="form-required">*</span></label>
-          <input type="text" class="form-input" placeholder="Tu nombre" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Apellidos <span class="form-required">*</span></label>
-          <input type="text" class="form-input" placeholder="Tu apellido" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">Teléfono <span class="form-required">*</span></label>
-          <input type="tel" class="form-input" placeholder="600 000 000" />
-        </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Nombre <span class="form-required">*</span></label>
+        <input
+          type="text"
+          class="form-input"
+          name="name"
+          [(ngModel)]="formData.name"
+          placeholder="Tu nombre"
+          required
+        />
       </div>
 
       <div class="form-group">
-        <label class="form-label">Email <span class="form-required">*</span></label>
-        <input type="email" class="form-input" placeholder="tu@email.com" />
+        <label class="form-label">Apellidos <span class="form-required">*</span></label>
+        <input
+          type="text"
+          class="form-input"
+          name="surname"
+          [(ngModel)]="formData.surname"
+          placeholder="Tu apellido"
+          required
+        />
       </div>
 
       <div class="form-group">
-        <label class="form-label">Servicio de interés</label>
-        <div class="form-select-wrapper">
-          <select class="form-select">
-            <option value="" disabled selected>Selecciona un servicio</option>
-            <option value="hogar">Limpieza del hogar</option>
-            <option value="oficinas">Oficinas</option>
-            <option value="eventos">Eventos</option>
-            <option value="postobra">Post-obra</option>
-          </select>
-          <svg
-            class="form-select-arrow"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </div>
+        <label class="form-label">Teléfono <span class="form-required">*</span></label>
+        <input
+          type="tel"
+          class="form-input"
+          name="phone"
+          [(ngModel)]="formData.phone"
+          placeholder="600 000 000"
+          required
+        />
       </div>
+    </div>
 
-      <div class="form-group">
-        <label class="form-label">¿Cómo nos conociste?</label>
-        <div class="form-select-wrapper">
-          <select class="form-select">
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="google">Google</option>
-            <option value="redes">Redes sociales</option>
-            <option value="recomendacion">Recomendación</option>
-            <option value="otro">Otro</option>
-          </select>
-          <svg
-            class="form-select-arrow"
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-        </div>
-      </div>
+    <div class="form-group">
+      <label class="form-label">Email <span class="form-required">*</span></label>
+      <input
+        type="email"
+        class="form-input"
+        name="email"
+        [(ngModel)]="formData.email"
+        placeholder="tu@email.com"
+        required
+      />
+    </div>
 
-      <div class="form-group">
-        <label class="form-label">Mensaje <span class="form-required">*</span></label>
-        <textarea class="form-textarea" placeholder="Cuéntanos qué necesitas..." rows="5"></textarea>
-      </div>
+    <div class="form-group">
+      <label class="form-label">Servicio de interés</label>
+      <div class="form-select-wrapper">
+        <select
+          class="form-select"
+          name="service"
+          [(ngModel)]="formData.service"
+        >
+          <option value="" disabled>Selecciona un servicio</option>
+          <option value="Limpieza del hogar">Limpieza del hogar</option>
+          <option value="Oficinas">Oficinas</option>
+          <option value="Eventos">Eventos</option>
+          <option value="Post-obra">Post-obra</option>
+        </select>
 
-      <button class="btn-submit">
         <svg
+          class="form-select-arrow"
           xmlns="http://www.w3.org/2000/svg"
-          width="18"
-          height="18"
+          width="16"
+          height="16"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -174,11 +160,96 @@
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <line x1="22" y1="2" x2="11" y2="13" />
-          <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          <polyline points="6 9 12 15 18 9" />
         </svg>
-        Enviar solicitud
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">¿Cómo nos conociste?</label>
+      <div class="form-select-wrapper">
+        <select
+          class="form-select"
+          name="source"
+          [(ngModel)]="formData.source"
+        >
+          <option value="" disabled>Selecciona una opción</option>
+          <option value="Google">Google</option>
+          <option value="Redes sociales">Redes sociales</option>
+          <option value="Recomendación">Recomendación</option>
+          <option value="Otro">Otro</option>
+        </select>
+
+        <svg
+          class="form-select-arrow"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mensaje <span class="form-required">*</span></label>
+      <textarea
+        class="form-textarea"
+        name="message"
+        [(ngModel)]="formData.message"
+        placeholder="Cuéntanos qué necesitas..."
+        rows="5"
+        required
+      ></textarea>
+    </div>
+
+    <button class="btn-submit" type="submit" [disabled]="isSending">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="22" y1="2" x2="11" y2="13" />
+        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+      </svg>
+      {{ isSending ? 'Enviando...' : 'Enviar solicitud' }}
+    </button>
+
+   @if (errorMessage) {
+  <p class="form-error">{{ errorMessage }}</p>
+}
+  </form>
+</div>
+</section>
+
+@if (showSuccessModal) {
+  <div class="success-modal-backdrop">
+    <div class="success-modal">
+      <div class="success-modal__icon">
+        ✓
+      </div>
+
+      <h3 class="success-modal__title">¡Solicitud enviada con éxito!</h3>
+
+      <p class="success-modal__text">
+        Hemos recibido tu mensaje correctamente y te responderemos lo antes posible.
+      </p>
+
+      <button class="success-modal__button" (click)="closeSuccessModal()">
+        Cerrar
       </button>
     </div>
   </div>
-</section>
+}
