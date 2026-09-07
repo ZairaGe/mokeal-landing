@@ -57,9 +57,9 @@ $radius-lg: 18px;
   // ── Grid (Fila de 4) ──────────────────────────────────────────────────────
   &__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // Cuatro columnas fijas en escritorio
+    grid-template-columns: repeat(5, 1fr); // Cuatro columnas fijas en escritorio
     gap: 24px;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
 
     // Tablets: 2x2
