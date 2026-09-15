@@ -2,13 +2,14 @@ import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import NavbarComponent from 'app/layouts/navbar/navbar';
 import Footer from 'app/layouts/footer/footer';
+import { FormsModule } from '@angular/forms';
 
 
 
 @Component({
   selector: 'app-trabaja-con-nosotros',
   standalone: true,
-  imports: [RouterLink, NavbarComponent, Footer],
+  imports: [RouterLink, NavbarComponent, Footer, FormsModule],
   templateUrl: './trabaja-con-nosotros.component.html',
   styleUrl: './trabaja-con-nosotros.component.scss'
 })
