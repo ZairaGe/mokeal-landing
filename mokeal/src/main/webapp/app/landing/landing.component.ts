@@ -10,6 +10,7 @@ import ServicesComponent from './sections/services/services.component';
 import ReviewsComponent from './sections/reviews/reviews.component';
 import ContactComponent from './sections/contact/contact.component';
 import DifComponent from './sections/differentiators/dif.component';
+import { TrabajaConNosotrosComponent } from "app/trabaja-con-nosotros/trabaja-con-nosotros.component";
 
 @Component({
   selector: 'jhi-landing',
@@ -28,7 +29,8 @@ import DifComponent from './sections/differentiators/dif.component';
     DifComponent,
     ReviewsComponent,
     ContactComponent,
-  ],
+    TrabajaConNosotrosComponent
+],
 })
 export default class LandingComponent implements OnInit {
   // Implementar OnInit

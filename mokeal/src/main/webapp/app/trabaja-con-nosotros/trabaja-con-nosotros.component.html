@@ -1,0 +1,102 @@
+<jhi-navbar></jhi-navbar>
+
+<section class="trabaja-con-nosotros">
+  <div class="container py-5">
+    <div class="trabaja-con-nosotros__wrapper">
+
+      <form
+        name="trabaja-con-nosotros"
+        method="POST"
+        data-netlify="true"
+        enctype="multipart/form-data"
+        (ngSubmit)="onSubmit($event)"
+        #form>
+
+        <input type="hidden" name="form-name" value="trabaja-con-nosotros" />
+
+        <h1 class="mb-2">Envía tu candidatura</h1>
+        <p class="mb-4">
+          Rellena el formulario y adjunta tu CV en PDF. Los campos marcados con <span class="text-danger">*</span> son obligatorios.
+        </p>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Nombre <span class="text-danger">*</span></label>
+            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Apellidos <span class="text-danger">*</span></label>
+            <input type="text" name="apellidos" class="form-control" placeholder="Tus apellidos" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Email <span class="text-danger">*</span></label>
+            <input type="email" name="email" class="form-control" placeholder="tu@email.com" required />
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="tel" name="telefono" class="form-control" placeholder="600 000 000" />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Cuéntanos sobre ti</label>
+          <textarea
+            name="mensaje"
+            class="form-control"
+            rows="2"
+            placeholder="Experiencia previa, disponibilidad, zonas de trabajo..."></textarea>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label">Currículum (PDF)</label>
+
+          <label
+            class="dropzone"
+            [class.dropzone--active]="arrastrando()"
+            [class.dropzone--filled]="!!archivoNombre()"
+            (dragover)="onDragOver($event)"
+            (dragleave)="onDragLeave($event)"
+            (drop)="onDrop($event)">
+
+            <input
+              type="file"
+              name="cv"
+              accept="application/pdf"
+              hidden
+              required
+              (change)="onFileSelected($event)"
+              #fileInput />
+
+            @if (archivoNombre()) {
+              <i class="fa-solid fa-file-pdf dropzone__icon"></i>
+              <span class="dropzone__text">{{ archivoNombre() }}</span>
+              <span class="dropzone__hint">Haz clic para cambiar el archivo</span>
+            } @else {
+              <i class="fa-solid fa-cloud-arrow-up dropzone__icon"></i>
+              <span class="dropzone__text">Arrastra tu CV aquí o haz clic para seleccionarlo</span>
+              <span class="dropzone__hint">PDF · máximo 10 MB</span>
+            }
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="enviando()">
+          <i class="fa-solid fa-paper-plane me-2"></i>
+          {{ enviando() ? 'Enviando...' : 'Enviar candidatura' }}
+        </button>
+
+        @if (enviado()) {
+          <p class="text-success mt-3 mb-0 text-center">¡Gracias! Hemos recibido tu candidatura.</p>
+        }
+        @if (error()) {
+          <p class="text-danger mt-3 mb-0 text-center">Hubo un error al enviar. Inténtalo de nuevo.</p>
+        }
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<jhi-footer></jhi-footer>

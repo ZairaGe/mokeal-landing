@@ -10,6 +10,11 @@ const routes: Routes = [
     loadComponent: () => import('./about/about.component'),
   },
   {
+    path: 'trabaja-con-nosotros',
+    loadComponent: () => import('./trabaja-con-nosotros/trabaja-con-nosotros.component')
+      .then(m => m.TrabajaConNosotrosComponent)
+  },
+  {
     path: '**',
     redirectTo: '',
   },
