@@ -37,14 +37,23 @@ export default class ContactComponent {
     this.successMessage = '';
     this.errorMessage = '';
 
+    const telefono = this.formData.phone.trim();
+    const email = this.formData.email.trim();
+
+    // Validar los campos obligatorios
     if (
       !this.formData.name.trim() ||
       !this.formData.surname.trim() ||
-      !this.formData.phone.trim() ||
-      !this.formData.email.trim() ||
       !this.formData.message.trim()
     ) {
       this.errorMessage = 'Por favor, completa todos los campos obligatorios.';
+      return;
+    }
+
+    // Es obligatorio indicar al menos un medio de contacto
+    if (!telefono && !email) {
+      this.errorMessage =
+        'Debes introducir al menos un teléfono o un correo electrónico para que podamos contactar contigo.';
       return;
     }
 
@@ -53,8 +62,8 @@ export default class ContactComponent {
     const templateParams = {
       name: this.formData.name,
       surname: this.formData.surname,
-      phone: this.formData.phone,
-      email: this.formData.email,
+      phone: telefono || 'No facilitado',
+      email: email || 'No facilitado',
       service: this.formData.service || 'No especificado',
       source: this.formData.source || 'No especificado',
       message: this.formData.message
@@ -73,7 +82,8 @@ export default class ContactComponent {
       })
       .catch((error) => {
         console.error('Error al enviar el correo:', error);
-        this.errorMessage = 'Hubo un error al enviar la solicitud. Inténtalo de nuevo.';
+        this.errorMessage =
+          'Hubo un error al enviar la solicitud. Inténtalo de nuevo.';
       })
       .finally(() => {
         this.isSending = false;
